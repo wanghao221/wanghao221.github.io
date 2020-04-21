@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Integer.ValueOf()引发的血案</title>
+      <link href="/wanghao221.github.io/2020/04/21/Integer-ValueOf-%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/"/>
+      <url>/wanghao221.github.io/2020/04/21/Integer-ValueOf-%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200421145859950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI3MTA4Ng==,size_16,color_FFFFFF,t_70" alt=""><br>这道题有的人或许做过，也可能选对，但是这其中的道理你却不一定理解，在这里大牛走过，小白留下一起学习。</p><p>先来分析选型A，Integer i01 = 59，是一个装箱的过程，在进行i01 == i02的比较过程中，因为右边是整型，发生了拆箱的动作，所以进行了值得比较，所以返回true。</p><p>在这里拿出Integer a = 59，Integer b = 59，这种又会出现什么状况呢，如果按照装箱和拆箱来看就是true，如果按照对象来看，就是false，在你举棋不定得时候你就应该看看源码了。</p><pre><code>private static class IntegerCache {    static final int low = -128;    static final int high;    static final Integer cache[];    static {        // high value may be configured by property        int h = 127;        String integerCacheHighPropValue =            sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);        if (integerCacheHighPropValue != null) {            try {                int i = parseInt(integerCacheHighPropValue);                i = Math.max(i, 127);                // Maximum array size is Integer.MAX_VALUE                h = Math.min(i, Integer.MAX_VALUE - (-low) -1);            } catch( NumberFormatException nfe) {                // If the property cannot be parsed into an int, ignore it.            }        }        high = h;        cache = new Integer[(high - low) + 1];        int j = low;        for(int k = 0; k &lt; cache.length; k++)            cache[k] = new Integer(j++);        // range [-128, 127] must be interned (JLS7 5.1.7)        assert IntegerCache.high &gt;= 127;    }    private IntegerCache() {}}</code></pre><p>这个类是Integer类中的一个静态内部类，其中的静态代码块在类进行加载的时候就进行了-127-128这些数字的创建和保存，将他们的引用全部保存在Cache数组中。</p><p>所以当用Integer 声明初始化变量时，会先判断所赋值的大小是否在-128到127之间，若在，则利用静态缓存中的空间并且返回对应cache数组中对应引用，存放到运行栈中，而不再重新开辟内存。</p><p>这里你就懂了吧，Integer a = 59，Integer b = 59返回的就是true，Integer a = 300，Integer b = 300在判断完之后就会new出来一个新的对象，所以会返回false。<br>    public static Integer valueOf(int i) {<br>        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)<br>            return IntegerCache.cache[i + (-IntegerCache.low)];<br>        return new Integer(i);<br>    }<br>和上面的一样，int进去之后首先进行判断，如果在-128-127之间就会返回引用，否则就在堆上new出来对象。所以B选项返回true。</p><p>C选项i03返回的是Cache数组中的引用，而i04返回的是堆上对象的引用，所以返回的是false。</p><p> System.out.println(i02== i04) i02是整型变量，i04是引用，这里又用到了解包，虚拟机会把i04指向的数据拆箱为整型变量再与之比较，所以比较的是数值，59==59，返回true.</p><p>————————————————<br>版权声明：本文为CSDN博主「小白又开始整活了」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/weixin_43271086/article/details/105658354" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43271086/article/details/105658354</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>优秀的程序员一定要有自己的博客!</title>
       <link href="/wanghao221.github.io/2020/04/20/%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
       <url>/wanghao221.github.io/2020/04/20/%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
