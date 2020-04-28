@@ -24,6 +24,10 @@
     <link rel="icon" href="/wanghao221.github.io/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
   
   
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
   
 <link rel="stylesheet" href="/wanghao221.github.io/css/style.css">
 
@@ -40,7 +44,7 @@
       var yiliaConfig = {
           rootUrl: '/wanghao221.github.io/',
           fancybox: true,
-          animate: false,
+          animate: true,
           isHome: false,
           isPost: true,
           isArchive: false,
@@ -59,7 +63,7 @@
         <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
         <a href="/" class="profilepic">
             
-            <img src="img/head.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+            <img lazy-src="img/head.jpg" class="js-avatar">
             
         </a>
         <hgroup>
@@ -164,7 +168,7 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a  href="/wanghao221.github.io/null">努力是为了  站在万人中央  成为别人的光</a></li>
+                            <li><a  href="http://wanghao221.github.io/">努力是为了  站在万人中央  成为别人的光</a></li>
                         
                             <li><a  href="http://wanghao221.github.io/">博客首页</a></li>
                         
@@ -195,7 +199,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/wanghao221.github.io/tags/Java%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">Java学习</a> <a href="/wanghao221.github.io/tags/%E7%8E%9B%E5%8D%A1%E5%B7%B4%E5%8D%A1%E7%B1%B3%E5%8D%A1%E6%8B%89%E5%8D%A1%E5%97%A1/" style="font-size: 10px;">玛卡巴卡米卡拉卡嗡</a> <a href="/wanghao221.github.io/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">软件下载</a>
+                        <a href="/wanghao221.github.io/tags/Java%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">Java学习</a> <a href="/wanghao221.github.io/tags/java%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">java学习</a> <a href="/wanghao221.github.io/tags/%E7%8E%9B%E5%8D%A1%E5%B7%B4%E5%8D%A1%E7%B1%B3%E5%8D%A1%E6%8B%89%E5%8D%A1%E5%97%A1/" style="font-size: 10px;">玛卡巴卡米卡拉卡嗡</a> <a href="/wanghao221.github.io/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">软件下载</a>
                     </div>
                 </section>
                 
@@ -251,8 +255,6 @@
                     
                       <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
                     
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
-                    
                       <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
                     
                       <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
@@ -268,7 +270,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">头发还挺多的小白</div>
+                    <div id="js-aboutme">萌得不能再萌的萌新</div>
                 </section>
                 
             </div>
@@ -287,7 +289,7 @@
         <header id="header" class="inner">
             <a href="/wanghao221.github.io/" class="profilepic">
                 
-                    <img src="/wanghao221.github.io/img/head.jpg" class="js-avatar" style="width: 100%; height: 100%; opacity: 1;">
+                    <img lazy-src="/wanghao221.github.io/img/head.jpg" class="js-avatar">
                 
             </a>
             <hgroup>
@@ -297,7 +299,7 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/wanghao221.github.io/null">努力是为了  站在万人中央  成为别人的光</a></li>
+                    <li><a href="http://wanghao221.github.io/">努力是为了  站在万人中央  成为别人的光</a></li>
                 
                     <li><a href="http://wanghao221.github.io/">博客首页</a></li>
                 
@@ -719,6 +721,22 @@
 </script>
 
 
+    <style>
+        .toc {
+            white-space: nowrap;
+            overflow-x: hidden;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $(".toc li a").mouseover(function() {
+                var title = $(this).attr('href');
+                $(this).attr("title", title);
+            });
+        })
+    </script>
+
 
 
 
@@ -769,7 +787,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/22/Visio-2003-%E7%B2%BE%E7%AE%80%E7%89%88-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E5%85%8D%E6%BF%80%E6%B4%BB-%E7%99%BE%E5%BA%A6%E4%BA%91%E9%93%BE%E6%8E%A5/">Visio 2003 精简版(简体中文,免激活)百度云链接</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/21/Integer-ValueOf-%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/">Integer.ValueOf()引发的血案</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/20/%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">优秀的程序员一定要有自己的博客!</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/20/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">定位方式4+1</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/19/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/">JSD2002第一次月考</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/22/Visio-2003-%E7%B2%BE%E7%AE%80%E7%89%88-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E5%85%8D%E6%BF%80%E6%B4%BB-%E7%99%BE%E5%BA%A6%E4%BA%91%E9%93%BE%E6%8E%A5/">Visio 2003 精简版(简体中文,免激活)百度云链接</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/21/Integer-ValueOf-%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/">Integer.ValueOf()引发的血案</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/20/%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">优秀的程序员一定要有自己的博客!</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/20/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">定位方式4+1</a></li><li class="post-list-item"><a class="post-list-link" href="/wanghao221.github.io/2020/04/19/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
@@ -802,7 +820,7 @@
                 &copy; 2020 wanghao
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://hexo.io/themes/" target="_blank">Wh'blog</a> by wanghao
             </div>
         </div>
         
@@ -910,6 +928,9 @@
       }
     </script>
 
-  </div>
+  </div> 
 </body>
+<!-- 页面点击小红心 --> 
+ <script type="text/javascript" src="/js/love.js"></script>
 </html>
+

@@ -3660,7 +3660,7 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #002b36;
+  background: #000;
   margin: 10px 0;
   padding: 10px 10px;
   overflow: auto;
@@ -3669,7 +3669,7 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
-  color: #9e90ff;
+  color: #70c0b1;
 }
 .article-entry pre,
 .article-entry code {
@@ -3696,13 +3696,13 @@ a.gitment-editor-footer-tip:hover {
   border: none;
 }
 .article-entry pre {
-  color: #fff;
+  color: #eaeaea;
 }
 .article-entry pre code {
   background: none;
   text-shadow: none;
   padding: 0;
-  color: #fff;
+  color: #eaeaea;
 }
 .article-entry p code {
   margin: 0 3px;
@@ -3845,7 +3845,7 @@ a.gitment-editor-footer-tip:hover {
 .article-entry .highlight {
   border-radius: 4px;
   padding: 0 10px;
-  color: #fff;
+  color: #eaeaea;
 }
 .article-entry .highlight pre {
   border: none;
@@ -3872,7 +3872,7 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-entry .highlight figcaption {
   font-size: 0.85em;
-  color: #75715e;
+  color: #969896;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -3903,7 +3903,7 @@ a.gitment-editor-footer-tip:hover {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #002b36;
+  background: #000;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -3929,8 +3929,8 @@ a.gitment-editor-footer-tip:hover {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #002b36;
-  color: #75715e;
+  background: #000;
+  color: #969896;
   font: 0.85em "Lucida Grande", Verdana, "Helvetica Neue", Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
@@ -3965,10 +3965,10 @@ pre .command {
   color: #258fb8;
 }
 pre .comment {
-  color: #75715e;
+  color: #969896;
 }
 pre .keyword {
-  color: #66d9ef;
+  color: #c397d8;
 }
 pre .function,
 pre .class .params {
@@ -3977,18 +3977,18 @@ pre .class .params {
 pre .params,
 pre .function,
 pre .css .value {
-  color: #fd971f;
+  color: #e78c45;
 }
 pre .css ~ * .tag,
 pre .at_rule,
 pre .preprocessor {
-  color: #f92672;
+  color: #e7c547;
 }
 pre .built_in,
 pre .class,
 pre .css ~ * .class,
 pre .function {
-  color: #a6e22e;
+  color: #7aa6da;
 }
 pre .value,
 pre .number {
@@ -3996,7 +3996,7 @@ pre .number {
 }
 pre .id,
 pre .css ~ * .id {
-  color: #fd971f;
+  color: #e78c45;
 }
 pre .link_label,
 pre .code,
