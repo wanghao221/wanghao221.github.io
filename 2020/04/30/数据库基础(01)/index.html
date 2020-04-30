@@ -3,22 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JSD2002第一次月考 | Hexo</title>
+  <title>数据库基础(01) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="考试                        document.domain&#x3D;&quot;tmooc.cn&quot;;                                                                  在线考试           &lt;&#x2F;div&gt;">
+  <meta name="description" content="###数据库  之前通过IO技术对数据进行增删改查 相当于自己写了一个简单版的数据库软件,只不过功能简陋效率低下,将来工作中任何一个项目都需要数据库软件,如果每个项目都自己写一遍数据库软件,开发效率极低,在互联网行业中只要是使用频繁并且繁琐的工作肯定会有一个通用的解决方案.  学习数据库就是学习如何和数据库软件进行交流,SQL语言就是用于程序员和数据库软件进行交流的语言.  DBMS:DataBa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSD2002第一次月考">
-<meta property="og:url" content="http://wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/index.html">
+<meta property="og:title" content="数据库基础(01)">
+<meta property="og:url" content="http://wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="考试                        document.domain&#x3D;&quot;tmooc.cn&quot;;                                                                  在线考试           &lt;&#x2F;div&gt;">
+<meta property="og:description" content="###数据库  之前通过IO技术对数据进行增删改查 相当于自己写了一个简单版的数据库软件,只不过功能简陋效率低下,将来工作中任何一个项目都需要数据库软件,如果每个项目都自己写一遍数据库软件,开发效率极低,在互联网行业中只要是使用频繁并且繁琐的工作肯定会有一个通用的解决方案.  学习数据库就是学习如何和数据库软件进行交流,SQL语言就是用于程序员和数据库软件进行交流的语言.  DBMS:DataBa">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://tes.tmooc.cn/private/tesweb/css/img/logo_xxw1.png">
-<meta property="article:published_time" content="2020-04-25T12:03:44.000Z">
-<meta property="article:modified_time" content="2020-04-25T12:13:18.179Z">
+<meta property="article:published_time" content="2020-04-30T01:27:18.000Z">
+<meta property="article:modified_time" content="2020-04-30T01:31:12.504Z">
 <meta property="article:author" content="wanghao">
-<meta property="article:tag" content="java学习">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tes.tmooc.cn/private/tesweb/css/img/logo_xxw1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -332,11 +330,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-JSD2002第一次月考" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数据库基础(01)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/" class="article-date">
-      <time datetime="2020-04-25T12:03:44.000Z" itemprop="datePublished">2020-04-25</time>
+      <a href="/wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/" class="article-date">
+      <time datetime="2020-04-30T01:27:18.000Z" itemprop="datePublished">2020-04-30</time>
 </a>
     </div>
   
@@ -349,7 +347,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JSD2002第一次月考
+      数据库基础(01)
     </h1>
   
 
@@ -360,7 +358,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wanghao221.github.io/tags/java%E5%AD%A6%E4%B9%A0/" rel="tag">java学习</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/wanghao221.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -370,28 +368,272 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <title>考试</title>
-    <link rel="stylesheet" href="http://tes.tmooc.cn/private/tesweb/css/style.css">
-    <link rel="stylesheet" href="http://tes.tmooc.cn/private/tesweb/css/iconfont.css">
-    <script>
-        document.domain="tmooc.cn";
-    </script>
+        <p>###数据库</p>
+<ul>
+<li><p>之前通过IO技术对数据进行增删改查 相当于自己写了一个简单版的数据库软件,只不过功能简陋效率低下,将来工作中任何一个项目都需要数据库软件,如果每个项目都自己写一遍数据库软件,开发效率极低,在互联网行业中只要是使用频繁并且繁琐的工作肯定会有一个通用的解决方案.</p>
+</li>
+<li><p>学习数据库就是学习如何和数据库软件进行交流,SQL语言就是用于程序员和数据库软件进行交流的语言.</p>
+</li>
+<li><p>DBMS:DataBaseManagementSystem 数据库管理系统(数据库软件),包括:MySQL/Oracle/SQLServer,DB2,SQLite等</p>
+</li>
+<li><p>常见DBMS介绍:</p>
+<ol>
+<li>MySQL:开源 Oracle公司产品,08年MySQL被Sun公司收购,09年Sun公司被Oracle, 原MySQL创始人离开Oracle创建新的数据库MariaDB    市场占有率第一</li>
+<li>Oracle:闭源 Oracle公司产品, 性能最高价格最贵的数据库. 市占率第二</li>
+<li>SQLServer:闭源 微软公司产品,应用在微软的整套解决方案中 市占率第三</li>
+<li>DB2:闭源  IBM公司产品,应用在IBM整套解决方案中.</li>
+<li>SQLite:轻量级数据库,只提供基础的增删改成操作.安装包几十k,主要应用在移动设备和嵌入式设备中.</li>
+</ol>
+</li>
+<li><p>网站的整套解决方案包括: 开发语言 操作系统 web服务器软件 数据库软件</p>
+</li>
+<li><p>开源和闭源</p>
+<ol>
+<li>开源:开发源代码 免费, 盈利方式:通过卖服务 , 会有程序员无偿的提供升级和维护</li>
+<li>闭源:不开放源代码    盈利方式:通过卖产品+卖服务, 会有技术大拿攻击,但是没关系闭源产品的公司会养着一群人负责维护和升级.<br>###SQL语言</li>
+</ol>
+</li>
+<li><p>Structured Query Language:结构化查询语言, 用于程序员和数据库软件(DBMS)进行交流</p>
+</li>
+<li><p>如何连接数据库软件: 检查mysql服务开启 window键+r  输入services.msc  </p>
+</li>
+<li><p>开始菜单中找到Mysql/MariaDB文件夹 里面的 Mysql Client   打开后直接输入密码 </p>
+</li>
+<li><p>如果是linux或mac系统  先打开终端 在终端中输入  mysql -u用户名 -p回车   回车后输入密码 回车  </p>
+</li>
+<li><p>断开连接: 关闭窗口 或执行 exit; </p>
+<pre><code>Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)   密码错误</code></pre><p>####数据库相关SQL语句</p>
+</li>
+<li><p>往数据库软件中保存数据,需要先建库再建表,最后再操作表里面的数据</p>
+</li>
+</ul>
+<ol>
+<li>查询所有数据库</li>
+</ol>
+<ul>
+<li>格式: show databases;</li>
+</ul>
+<ol start="2">
+<li>创建数据库  </li>
+</ol>
+<ul>
+<li>格式: create database 数据库名;              使用默认字符集创建数据<br>  create database db1;</li>
+<li>指定字符集格式:  create database 数据库名 character set utf8/gbk;<br>  create database db2 character set utf8;<br>  create database db3 character set gbk;</li>
+</ul>
+<ol start="3">
+<li>查看数据库详情</li>
+</ol>
+<ul>
+<li>格式: show create database 数据库名;<br>  show create database db1;</li>
+</ul>
+<ol start="4">
+<li>删除数据库</li>
+</ol>
+<ul>
+<li>格式: drop database 数据库名;<br>  drop database db4;</li>
+</ul>
+<ol start="5">
+<li>使用数据库</li>
+</ol>
+<ul>
+<li>对表和数据进行操作时必须先使用了数据库才可以 不然会报错</li>
+<li>格式: use 数据库名;<br>  use db1;</li>
+</ul>
+<p>###数据库相关练习:</p>
+<ol>
+<li>分别创建mydb1和mydb2  第一个字符集utf8 第二个gbk<br> create database mydb1 character set utf8;<br> create database mydb2 character set gbk;</li>
+<li>查询所有数据库检查是否创建成功<br> show databases;</li>
+<li>分别查询两个数据库的字符集是否成功<br> show create database mydb1;<br> show create database mydb2;</li>
+<li>先使用mydb1  再使用mydb2<br> use mydb1;<br> use mydb2;</li>
+<li>删除两个数据库<br> drop database mydb1;<br> drop database mydb2;<br>###表相关的SQL </li>
+</ol>
+<ul>
+<li>操作表时一定保证已经使用了某个数据库  不然会报以下错:<br>  ERROR 1046 (3D000): No database selected</li>
+</ul>
+<ol>
+<li>创建表</li>
+</ol>
+<ul>
+<li>格式: create table 表名(字段名 字段类型,字段名 字段类型);<br>  create table student(name varchar(10),age int);    </li>
+<li>指定字符集格式: create table 表名(字段名 类型,字段名 类型) charset=utf8/gbk;<br>  create table person(name varchar(10),gender varchar(5))charset=gbk;</li>
+</ul>
+<ol start="2">
+<li>查询所有表</li>
+</ol>
+<ul>
+<li>格式: show tables;</li>
+</ul>
+<ol start="3">
+<li>查询表详情</li>
+</ol>
+<ul>
+<li>格式: show create table 表名;<br>  show create table person;</li>
+</ul>
+<ol start="4">
+<li>查看表字段</li>
+</ol>
+<ul>
+<li>格式: desc 表名;<br>  desc student;</li>
+</ul>
+<ol start="5">
+<li>删除表 </li>
+</ol>
+<ul>
+<li>格式: drop table 表名:<br>  drop table student;</li>
+</ul>
+<ol start="6">
+<li>修改表名</li>
+</ol>
+<ul>
+<li>格式: rename table 原名 to 新名;<br>  rename table person to t_person;</li>
+</ul>
+<ol start="7">
+<li>添加表字段</li>
+</ol>
+<ul>
+<li>最后添加格式: alter table 表名 add 字段名 类型;</li>
+<li>最前面添加:alter table 表名 add 字段名 类型 first;</li>
+<li>在某个字段后面添加 alter table 表名 add 字段名 类型 after xxx;<br>  alter table t_person add salary int;<br>  alter table t_person add id int first;<br>  alter table t_person add age int after name;</li>
+</ul>
+<ol start="8">
+<li>删除表字段</li>
+</ol>
+<ul>
+<li>格式: alter table 表名 drop 字段名;<br>  alter table t_person drop salary;</li>
+</ul>
+<ol start="9">
+<li>修改表字段</li>
+</ol>
+<ul>
+<li>格式: alter table 表名 change 原名 新名 新类型;<br>  alter table t_person change age salary int;<br>###表相关SQL语句回顾</li>
+</ul>
+<ol>
+<li>创建 create table t1(name varchar(10),age int)charset=utf8;</li>
+<li>查询所有  show tables;</li>
+<li>查询表详情 show create table t1;</li>
+<li>查询表字段 desc t1</li>
+<li>删除表 drop table t1;</li>
+<li>修改表名 rename table t1 to t2;</li>
+<li>添加表字段 alter table t1 add salary int first/ after xxx;</li>
+<li>删除表字段 alter table t1 drop salary;</li>
+<li>修改表字段 alter table t1 change 原名 新名 新类型;<br>####表相关练习题：<ul>
+<li>创建数据库mydb1 字符集utf8 并使用该数据库<br>create database mydb1 character set utf8;<br>use mydb1;</li>
+<li>在mydb1中创建员工表emp   字段有name   表字符集也是utf8<br>create table emp(name varchar(10)) charset=utf8;</li>
+<li>添加表字段age在最后<br>alter table emp add age int;</li>
+<li>添加id字段在最前面<br>alter table emp add id int first;</li>
+<li>添加性别gender在name后面<br>alter table emp add gender varchar(5) after name;</li>
+<li>修改gender为工资sal<br>alter table emp change gender sal int;</li>
+<li>删除age字段<br>alter table emp drop age;</li>
+<li>修改表名为t_emp<br>rename table emp to t_emp;</li>
+<li>删除t_emp表<br>drop table t_emp;</li>
+<li>删除数据库<br>drop database mydb1;<br>###数据相关SQL</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>执行数据相关的SQL 必须保证已经使用了某个数据库,并且存在数据所对应的表格<br>  create database mydb2 character set utf8;<br>  use mydb2;<br>  create table person(name varchar(10),age int)charset=utf8;</li>
+</ul>
+<ol>
+<li>插入数据</li>
+</ol>
+<ul>
+<li>全表插入格式(要求值的数量和顺序必须和表字段一致): insert into 表名 values(值1,值2,值3);<br>  insert into person values(‘Tom’,18);</li>
+<li>指定字段插入格式(要求值的数量和顺序必须和指定的一致): insert into 表名(字段名1,字段名2)values(值1,值2);<br>  insert into person(name)values(‘Jerry’);</li>
+<li>批量插入数据格式: 在values后面写多组值即可f<br>  insert into person values(‘Lucy’,20),(‘Lily’,21);<br>  insert into person(name)values(‘zhangsan’),(‘lisi’);</li>
+<li>插入中文:<br>  insert into person values(‘刘德华’,30);<br>  如果执行以上代码出现错误提示,提示里面包含16进制的错误信息 执行以下SQL<br>  set names gbk; </li>
+</ul>
+<ol start="2">
+<li>查询数据</li>
+</ol>
+<ul>
+<li>格式: select 字段信息 from 表名 where 条件;</li>
+<li>举例:<br>  查询person表中所有的名字<ol>
+<li>select name from person;<br>查询person表中年龄大于20的名字和年龄</li>
+<li>select name,age from person where age&gt;20;<br>查询person表中所有数据的所有字段信息</li>
+<li>select * from person;      </li>
+</ol>
+</li>
+</ul>
+<ol start="3">
+<li>修改数据</li>
+</ol>
+<ul>
+<li>格式: update 表名 set 字段名=xxx,字段名=xxx where 条件;</li>
+<li>举例:<br>  update person set age=8 where name=’Tom’;<br>  update person set age=10 where age is null;</li>
+</ul>
+<ol start="4">
+<li>删除数据</li>
+</ol>
+<ul>
+<li>格式: delete from 表名 where 条件;</li>
+<li>举例:<ol>
+<li>删除Tom<br>delete from person where name=’Tom’;</li>
+<li>删除年龄小于20岁的<br>delete from person where age&lt;20;</li>
+<li>删除所有数据<br>delete from person;</li>
+</ol>
+</li>
+</ul>
+<p>###增删改查回顾:</p>
+<ol>
+<li>插入数据    insert into 表名 values(值1,值2);</li>
+<li>查询数据    select 字段信息 from 表名 where 条件;</li>
+<li>修改数据    update 表名 set 字段名=xxx where 条件;</li>
+<li>删除数据    delete from 表名 where 条件;<br>###数据类型</li>
+<li>整数类型: int(m)和bigint(m)  bigint等效java中的long, m代表显示长度 需要结合zerofill关键字使用<br> create table t1(name varchar(10),age int(10) zerofill);<br> insert into t1 values(‘Tom’,18);<br> select * from t1;</li>
+<li>浮点数: double(m,d) m代表总长度  d代表小数长度    58.234 m=5  d=3   ,超高精度的浮点数decimal(m,d)只有涉及超高精度运算时使用.</li>
+<li>字符串:</li>
+</ol>
+<ul>
+<li>char(m): 固定长度  m=10 存”abc”  占10,执行效率略高 最大255</li>
+<li>varchar(m):可变长度 m=10 存”abc” 占3,更节省存储空间, 最大65535 超过255建议使用text</li>
+<li>text(m):可变长度,最大值65535.</li>
+</ul>
+<ol start="4">
+<li>日期:</li>
+</ol>
+<ul>
+<li>date: 只能保存年月日</li>
+<li>time: 只能保存时分秒</li>
+<li>datetime:保存年月日时分秒,默认值是null,最大值9999-12-31</li>
+<li>timestamp:时间戳(距离1970年毫秒数),保存年月日时分秒,默认值当前系统时间,最大值2038-1-19</li>
+<li>举例: <pre><code>create table t_date(t1 date,t2 time,t3 datetime,t4 timestamp);
+insert into t_date values(&apos;2020-1-18&apos;,null,null,null);
+insert into t_date values(null,&apos;17:35:18&apos;,&apos;2020-3-17 12:30:23&apos;,null);</code></pre>###课程回顾</li>
+</ul>
+<ol>
+<li>数据库相关</li>
+</ol>
+<ul>
+<li>创建数据库 create database db1 character set utf8/gbk;</li>
+<li>查询所有数据库 show databases;</li>
+<li>查询数据库详情  show create database db1;</li>
+<li>删除数据库 drop database db1;</li>
+<li>使用数据库  use db1;</li>
+</ul>
+<ol start="2">
+<li>表相关</li>
+</ol>
+<ul>
+<li>创建表 create table t1(name varchar(10),age int) charset=utf8/gbk;</li>
+<li>查询所有表  show tables;</li>
+<li>查询表详情 show create table t1;</li>
+<li>查询表字段 desc t1;</li>
+<li>删除表 drop table t1;</li>
+<li>修改表名 rename table t1 to t2;</li>
+<li>添加表字段 alter table t1 add 字段名 类型 first/after xxx;</li>
+<li>删除表字段 alter table t1 drop 字段名;</li>
+<li>修改表字段 alter table t1 change 原名 新名 新类型;</li>
+</ul>
+<ol start="3">
+<li>数据相关</li>
+</ol>
+<ul>
+<li>插入数据:<br>  insert into t1 values(‘tom’,18);<br>  insert into t1(name) values(‘tom’);<br>  insert into t1 values(‘tom’,18),(‘jerry’,28);</li>
+<li>查询数据:<br>  select 字段信息 from t1 where 条件;</li>
+<li>修改数据<br>  update t1 set name=’张三’,age=20 where name=’lisi’;</li>
+<li>删除数据<br>  delete from t1 where 条件;</li>
+</ul>
 
-<body class="bg-f3f2f2">
-<div class="page-header md-2018121001-xxw">
-    <div class="clearfix container">
-        <div class="logo-box pull-left">
-            <img src="http://tes.tmooc.cn/private/tesweb/css/img/logo_xxw1.png">
-        </div>
-        <ul class="nav-xxw pull-left">
-            <li><a href="#">在线考试</a></li>
-        </ul>
-
-<pre><code>&lt;/div&gt;</code></pre></div>
-
-
-
-</div></body>
       
       
         <div class="page-reward">
@@ -446,13 +688,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/">JSD2002第一次月考</a></p>
+        <p><span>本文标题:</span><a href="/wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/">数据库基础(01)</a></p>
         <p><span>文章作者:</span><a href="/wanghao221.github.io/" title="访问 wanghao 的个人博客">wanghao</a></p>
-        <p><span>发布时间:</span>2020年04月25日 - 20时03分</p>
-        <p><span>最后更新:</span>2020年04月25日 - 20时13分</p>
+        <p><span>发布时间:</span>2020年04月30日 - 09时27分</p>
+        <p><span>最后更新:</span>2020年04月30日 - 09时31分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/" title="JSD2002第一次月考">http://wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/　　作者: wanghao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/" title="数据库基础(01)">http://wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/　　作者: wanghao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/wanghao221.github.io/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -465,18 +707,9 @@
 
 <nav id="article-nav">
   
-    <a href="/wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          数据库基础(01)
-        
-      </div>
-    </a>
   
-  
-    <a href="/wanghao221.github.io/2020/04/22/Visio-2003-%E7%B2%BE%E7%AE%80%E7%89%88-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E5%85%8D%E6%BF%80%E6%B4%BB-%E7%99%BE%E5%BA%A6%E4%BA%91%E9%93%BE%E6%8E%A5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Visio 2003 精简版(简体中文,免激活)百度云链接</div>
+    <a href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSD2002第一次月考</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -572,13 +805,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/wanghao221.github.io/2020/04/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80(01)/" title="上一篇: 数据库基础(01)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/wanghao221.github.io/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/wanghao221.github.io/2020/04/22/Visio-2003-%E7%B2%BE%E7%AE%80%E7%89%88-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E5%85%8D%E6%BF%80%E6%B4%BB-%E7%99%BE%E5%BA%A6%E4%BA%91%E9%93%BE%E6%8E%A5/" title="下一篇: Visio 2003 精简版(简体中文,免激活)百度云链接">
+            <a href="/wanghao221.github.io/2020/04/25/JSD2002%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%9C%88%E8%80%83/" title="下一篇: JSD2002第一次月考">
                 <i class="fa fa-angle-right"></i>
             </a>
         
