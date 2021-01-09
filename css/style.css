@@ -2087,7 +2087,7 @@ a {
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
 }
-#header .header-nav .fa-music {
+#header .header-music {
   position: absolute;
   bottom: 100px;
   left: 0;
