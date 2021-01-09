@@ -2087,6 +2087,12 @@ a {
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
 }
+#header .header-nav .fa-music {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 50%;
+}
 #header .header-nav .social {
   margin-right: 15px;
   margin-top: 10px;
