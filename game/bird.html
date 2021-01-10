@@ -1,0 +1,104 @@
+
+<!doctype HTML>
+<html>
+
+<head>
+	<title> Flappy Ball </title>
+	<link rel="stylesheet" href="css/bird.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+	<svg width="750" height="600" id="drawing">
+	<rect width="750" height="600" id="background"/>
+
+	<!-- clouds -->
+
+	<circle cx="0" cy="0" r="55" fill="white" id="c1" class="cloud"/>
+	<circle cx="90" cy="0" r="75" fill="white" id="c2" class="cloud"/>
+	<circle cx="200" cy="0" r="65" fill="white" id="c3" class="cloud"/>
+
+	<circle cx="400" cy="0" r="70" fill="white" id="c4" class="cloud"/>
+	<circle cx="470" cy="0" r="55" fill="white" id="c5" class="cloud"/>
+	<circle cx="560" cy="0" r="70" fill="white" id="c6" class="cloud"/>
+	<circle cx="670" cy="0" r="65" fill="white" id="c7" class="cloud"/>
+
+	<!-- On-screen objects -->
+	<circle cx="80" cy="300" r="27" id="flappy" class="bird" />
+	<rect width="40" height="400" x="800" y="100" class="topPipe"/>
+	<rect width="40" height="400" x="800" y="100" class="bottomPipe"/>
+	<rect width="40" height="400" x="1200" y="100" class="topPipe"/>
+	<rect width="40" height="400" x="1200" y="100" class="bottomPipe"/>
+	<circle cx="1000" cy="0" r="15" id="coin"/>
+
+	<g id="scoreScreen">
+		<rect width="120" height="40" x="600" y="25" rx="15" ry="25" id="scoreBoard"/>
+		<text x="630" y="50" id="score"> Score: 0 </text>
+	</g>
+
+	<g id="coinScreen">
+		<rect width="120" height="40" x="600" y="75" rx="15" ry="25" id="coinBoard"/>
+		<text x="630" y="100" id="coinNum"> Coins: 0 </text>
+	</g>
+
+	<g id="flyScreen">
+		<rect width="120" height="40" x="600" y="535" rx="15" ry="25" id="fly" />
+		<text x="635" y="560" id="score"> Hover </text>
+		<rect width="120" height="40" x="600" y="535" id="flyCover" onclick="fly(40)"/>
+	</g>
+
+	<g id="gameOverScreen">
+		<rect width="500" height="300" x="125" y="150" rx="25" ry="25" id="gameover"/>
+		<text x="165" y="225" id="gameOverMsg"> Game Over!</text>
+		<text x="170" y="295" id="finalscore"> Score: 0 </text>
+		<text x="310" y="295" id="finalcoins"> Coins: 0 </text>
+
+
+		<rect width="270" height="60" x="155" y="350" rx="25" ry="25" id="newgame" fill="red"/>
+		<text x="220" y="387.5" id="newgameText"> New Game </text>
+		<rect width="270" height="60" x="155" y="350" id="newgameCover" onclick="location.reload()"/>		
+
+		<text x="475" y="225" id="medalText"> Medal</text>
+		<rect width="1" height="300" x="450" y="150" class="divider"/>
+  		<polygon id="medalTriangle" points="540,340 500,260 580,260" />
+    		<polygon id="insideTriangle" points="540,330 510,266 570,266" />
+		<circle cx="540" cy="350" r="17"/>
+		<circle cx="540" cy="350" r="16" id="medal"/>
+		<text x="500" y="400" id="medalType"> Gold </text>
+
+		<rect width="500" height="150" x="125" y="150" fill-opacity=0.0 id="gameoverCover"/>
+	</g>
+
+	<!-- NEW CODE -->
+	<g id="startScreen" style="display:none;">
+		<rect width="500" height="300" x="125" y="150" rx="25" ry="25" id="gameover"/>
+		<text x="270" y="225" id="gameOverMsg"> Flappy Ball</text>
+		<text x="300" y="280" id="instructions"> Click hover to jump </text>
+		<text x="250" y="300" id="instructions"> Collect as many coins as you can </text>
+		<text x="260" y="320" id="instructions"> Avoid crashing into the pipes </text>
+
+
+		<rect width="270" height="60" x="240" y="350" rx="25" ry="25" id="newgame" onclick="startGameClicked()" fill="red"/>
+		<text x="305" y="387.5" id="newgameText"> Start Game </text>
+		<!--<rect width="270" height="60" x="240" y="350" id="newgameCover"/>		-->
+
+		<!--<text x="475" y="225" id="medalText"> Medal</text>
+		<rect width="1" height="300" x="450" y="150" class="divider"/>
+  		<polygon id="medalTriangle" points="540,340 500,260 580,260" />
+    		<polygon id="insideTriangle" points="540,330 510,266 570,266" />
+		<circle cx="540" cy="350" r="17"/>
+		<circle cx="540" cy="350" r="16" id="medal"/>
+		<text x="500" y="400" id="medalType"> Gold </text> -->
+
+		<!--<rect width="500" height="150" x="125" y="150" fill-opacity=0.0 id="gameoverCover"/> -->
+	</g>
+
+	</svg>
+<br />
+<!--<button onclick="" id="start">New Game</button>
+<button onclick="fly(40)" id="fly">Fly</button> -->
+
+<script src="js/bird.js"></script>
+
+</body>
+</html>
