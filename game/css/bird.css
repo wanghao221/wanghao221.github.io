@@ -1,0 +1,59 @@
+.topPipe, .bottomPipe, #medalTriangle{
+	fill:#7FD47F;
+}
+
+#background{
+	fill:#B2D6FF;
+}
+
+#scoreBoard, #gameover, #insideTriangle, #fly, #coinBoard	{
+	fill:#FEFFAA;
+	font-family: "Century Gothic";
+
+}
+
+#score, #gameOverMsg, #finalscore, #medalText, #medalType, #newgameText, #coinNum, #finalcoins, #instructions{
+	font-family: "Century Gothic";
+}
+
+#gameOverMsg, #medalText{
+	font-size: 40px;
+}
+
+#finalscore, #medalType, #newgameText, #finalcoins{
+	font-size: 25px;
+}
+
+.bird, #newgame{
+	fill:#ff4444;
+}
+
+#fly, #start {
+	font-family: "Century Gothic";
+	color:#000000;
+}
+
+#gameOverScreen{
+	display:none;
+}
+
+#medal{
+	fill:#FFFF66;
+}
+
+#flyCover, #newgameCover{
+	fill-opacity:0.0;
+}
+
+#coin {
+	fill: yellow;
+}
+
+
+
+
+
+#newgameCover:hover{
+	fill: #982222:hover;
+}
+
