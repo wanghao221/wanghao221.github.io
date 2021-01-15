@@ -1,0 +1,381 @@
+
+/* light bulb images created by my wife UX Designer */
+/* background images from https://tamagotchi.fandom.com/wiki/Patchi_Forest */
+/* food and toys images from https://www.models-resource.com/mobile/mytamagotchiforever/ */
+
+:root {
+    --main-width: 80vw;
+    --main-min-width: 350px;
+    --main-max-width: 600px;
+}
+
+/***********************  Global section   *******************/
+body {
+    font-family: 'Pangolin', cursive;
+    font-size: 1em;
+    background-color: black;
+    background-image: url('../img/Patchi_forest_new.png');
+    background-size: cover;
+    background-position: center;
+    min-width: var(--main-min-width);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    font-family: 'Pangolin', cursive;
+    cursor: pointer;
+    border: 3px solid rgb(245, 240, 108);
+    /* outline: inherit; */
+    background-color: rgb(65, 212, 254);
+    box-shadow: 3px 3px rgb(160, 157, 70), 2px 2px rgb(160, 157, 70), 1px 1px rgb(160, 157, 70);
+}
+
+header, main {
+    width: var(--main-width);
+    /* width: 550px; */
+    min-width: var(--main-min-width);
+    max-width: var(--main-max-width);
+}
+
+/***********************  HEADER section   *******************/
+header {
+    background-color: thistle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* min-height: 180px; */
+    /* overflow: hidden; */
+}
+
+.logo-container {
+    background-color: thistle;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* position: absolute; */
+}
+#name-display {
+    font-family: 'Long Cang', cursive;
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 0.6em;
+    padding-right: 10px;
+    padding-top: 10px;
+    text-align: right;
+    margin: 0;
+}
+#logo {
+    height: 90px;
+}
+
+.all-stat {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-game {
+    /* position: relative; */
+    position: absolute;
+    top: 0px;
+    padding: 5px 0;
+    width: 220px;
+    text-align: center;
+    transition: all ease-in-out 1000ms;
+    z-index: 2;
+}
+input {
+    display: inline;
+    font-family: 'Pangolin', cursive;
+    font-size: 15px;
+    height: 25px;
+    width: 125px;
+    margin: -15px auto 5px;
+    padding: 1px 5px 1px 10px;
+    outline: inherit;
+    border: 1px solid rgb(245, 240, 108);
+    border-radius: 15px;
+}
+.start-btn {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.status-container {
+    position: relative;
+    height: 85px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+h4 {
+    margin: 0 0 5px;
+}
+
+ul {
+    display: inline-block;
+    padding: 0;
+    padding-left: 25px;
+    margin: 0;
+    height: 50px;
+    width: 230px;
+    columns: 2;
+}
+.status {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+/***********************  MAIN section   *******************/
+main {
+    position: relative;
+    height: 60vh;
+    /* height: 700px; */
+    min-height: 300px;
+    background-color: lightyellow;
+    overflow: hidden;
+}
+
+.playground {
+    box-sizing: border-box;
+    background-image: url('../img/Patchi_forest_gogo.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 85%;
+    /* min-height: 300px; */
+    /* max-height: 540px; */
+    border-left: solid 1px grey;
+    border-right: solid 1px grey;
+    transition: all ease-in-out 1s;
+}
+.opaqueLayer {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-end; */
+}
+
+.light-btn {
+    background: url('../img/lightOn.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    border: none;
+    /* outline: none; */
+    margin-right: 30px;
+    padding: 0;
+    width: 70px;
+    height: 88px;
+    transition: all ease-in-out 1s;
+    cursor: pointer;
+    /* box-shadow: 5px 10px 25px rgba(245, 240, 108, 0.7); */
+    box-shadow: none;
+
+}
+
+/***********************  Tamagotchi section   *******************/
+.tamagotchi {
+    display: none;
+    position: relative;
+    width: 20vw;
+    height: 25vh;
+    right: 0%;
+    top: 40%;
+    transition: all linear 1s;
+}
+.tamagotchi:hover {
+    right: 20%;
+    top: 55%;
+}
+
+.pet {
+    position: absolute;
+    min-height: 100px;
+    transition: opacity ease-in-out 1s;
+    transition: all linear 1s;
+    height: 60%;
+}
+
+#tween, #teen, #adult {
+    opacity: 0;
+}
+
+.stuff {
+    display: inline-block;
+    display: none;
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    z-index: 10;
+    bottom: 20%;
+}
+#food {
+    background-image: url('../img/pizza.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 10%;
+}
+#toy {
+    background-image: url('../img/unicorn.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: 10%;
+}
+
+.drop-in {
+    display: inline;
+}
+
+/***********************  Feed and Play section   *******************/
+.actions {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: thistle;
+    text-align: center;
+}
+
+.actions button {
+    font-family: 'Pangolin', cursive;
+    font-size: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px 20px;
+}
+
+/***********************  End Game section   *******************/
+#endGame {
+    background: url('../img/craveyard.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    opacity: 0;
+    font-size: 1.5em;
+    width: 70vw;
+    height: 50vh;
+    color: rgb(225, 227, 228);
+    background-color: red;
+    text-align: center;
+    transition: all ease-in 300ms;
+    z-index: -1;
+}
+
+.clear-x-wrapper {
+    margin: 10px;
+    width: 30px; 
+    height: 30px;
+    float: right;
+}
+.clear-popup-x {
+    visibility: visible;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    /* float: right; */
+}
+#svg-X {
+    fill: white;
+}
+
+#endGame h2 {
+    margin-top: 50px;
+}
+/***********************  Switch class section   *******************/
+.show { /* to show Tamagotchi */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.night {
+    background-image: url('../img/Patchi_forest_night.png');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(2, 4, 67, 0.529);
+}
+
+.light-off {
+    background-image: url('../img/lightOff.png');
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.hide {
+    visibility: hidden;
+    /* opacity: 0; */
+    /* display: none; */
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2020-6-25 20:19:38
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation rotate-90-ccw
+ * ----------------------------------------
+ */
+ @-webkit-keyframes rotate-90-ccw {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(-90deg);
+              transform: rotate(-90deg);
+    }
+  }
+  @keyframes rotate-90-ccw {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(-90deg);
+              transform: rotate(-90deg);
+    }
+  }
+
+.rotate-90-ccw {
+	-webkit-animation: rotate-90-ccw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-90-ccw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@media only screen and (min-height: 560px)
+and (max-height: 670px) {
+    .playground {
+        height: 76%;
+    }
+}
+
+@media only screen and (min-height: 671px)
+and (max-height: 815px) {
+    .playground {
+        height: 80%;
+    }
+}
