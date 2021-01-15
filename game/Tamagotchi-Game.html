@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google-site-verification" content="i3bVXD3ywVilJt3b0Denbr2n41les3p8ciIldduw4X0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Animation plugin -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <!-- style sheet and font plugin -->
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Pangolin&family=Roboto&family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Tamagotchi-Game/css/style.css">
+    <!-- scipts -->
+    <script	defer
+	src="https://code.jquery.com/jquery-3.5.0.min.js"
+	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+	crossorigin="anonymous"></script>
+    <script defer src="Tamagotchi-Game/js/app.js"></script>
+	<title>Wanghao | Tamagotchi</title>
+	<link rel="icon" type="image/x-icon" href="../favfavicon.ico"/>
+	<meta name="keywords" content="游戏动画网站" />
+	<meta name="description" content="游戏动画网站，基于Bootstrap前端响应式框架开发。" /> 
+	<meta name="author" content="海拥(https://blog.csdn.net/qq_44273429/)" />
+	<meta name="copyright" content="海拥(https://blog.csdn.net/qq_44273429/)" />
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- <h2 id="name-display">NameHere</h2> -->
+            <!-- logo from https://logos.fandom.com/wiki/Tamagotchi -->
+            <img id="logo" src="Tamagotchi-Game/img/Tamagotchi_Logo.png" alt="logo">
+        </div>
+        <div class="all-stat">
+            <section class="start-game animate__animated">
+                <h4>给你的宠物起个名字吧</h4>
+                <input type="text">
+                <button class="start-btn">Start</button>
+            </section>
+            <section class="status-container hide animate__animated">
+                <h4>Health Status</h4>
+                <ul>
+                    <li class="status">岁数: <span class="age">0</span></li>
+                    <li class="status">饥饿度: <span class="hungriness">5</span></li>
+                    <li class="status">郁闷值: <span class="boredom">5</span></li>
+                    <li class="status">困意: <span class="sleepiness">5</span></li>
+                </ul>
+            </section>
+        </div>
+    </header>
+    
+    <main>
+        <!-- <section>  depending on the size of viewport, clickable area shrinks even button element size didn't change
+            <button class="light-btn">Light</button>
+        </section> -->
+        <section class="playground">
+            <div class="opaqueLayer">
+                <button class="light-btn"></button>
+                <div class="animate__animated tamagotchi">
+                    <!-- below images taken from various sites -->
+                    <img class="pet" id="baby" src="Tamagotchi-Game/img/ClipartKey_195485.png" alt="baby">
+                    <img class="pet" id="tween" src="Tamagotchi-Game/img/tween-darth-vader-clipart-2019-7.png" alt="tween">
+                    <img class="pet" id="teen" src="Tamagotchi-Game/img/teen-vader-clip-star-wars-2.png" alt="teen">
+                    <img class="pet" id="adult" src="Tamagotchi-Game/img/adult-20-202841_vader-drawing-epic-star-wars-darth-vader.png" alt="adult">
+                </div>
+            </div>
+        </section>
+        <section class="stuff animate__animated" id="food" data-img-list="arrFoodBasket"></section>
+        <section class="stuff animate__animated" id="toy" data-img-list="arrToyBin"></section>
+        <section class="actions">
+            <button id="feed">Feed</button>
+            <button id="play">Play</button>
+        </section>
+    </main>
+    <section id="endGame">
+        <a class="clear-x-wrapper"><svg class="clear-popup-x " width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title></title>
+            <desc>Created with Sketch 59.1 (86144) - https://sketch.com</desc>
+            <defs>
+                <path d="M8.71,7.29 L11.9992017,10.5798855 L15.29,7.29 C15.6821222,6.89787783 16.3178778,6.89787783 16.71,7.29 C17.1021222,7.68212217 17.1021222,8.31787783 16.71,8.71 L13.4192017,11.9998855 L16.71,15.29 C16.8993127,15.4777666 17.0057983,15.7333625 17.0057983,16 C17.0057983,16.2666375 16.8993127,16.5222334 16.71,16.71 C16.5212812,16.8971865 16.265803,17.0015368 16,17.0000167 C15.734197,17.0015368 15.4787188,16.8971865 15.29,16.71 L11.9992017,13.4198855 L8.71,16.71 C8.52128117,16.8971865 8.26580298,17.0015368 8,17.0000167 C7.73419702,17.0015368 7.47871883,16.8971865 7.29,16.71 C7.10068735,16.5222334 6.99420168,16.2666375 6.99420168,16 C6.99420168,15.7333625 7.10068735,15.4777666 7.29,15.29 L10.5792017,11.9998855 L7.29,8.71 C7.03634143,8.45634143 6.93727648,8.08662601 7.03012196,7.74012196 C7.12296744,7.39361791 7.39361791,7.12296744 7.74012196,7.03012196 C8.08662601,6.93727648 8.45634143,7.03634143 8.71,7.29 Z" id="path-X"></path>
+            </defs>
+            <g id="Icons-by-mad-lab.studio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Validation-/-Cross-x" transform="translate(-7.000000, -7.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-X"></use>
+                    </mask>
+                    <use id="svg-X" fill="none" fill-rule="nonzero" xlink:href="#path-X"></use>
+                </g>
+            </g>
+        </svg></a>
+        <h2>GAME OVER!</h2>
+        <h2>You killed <span id="name-in-end-msg">it</span>!</h2>
+    </section>
+</body>
+</html>
