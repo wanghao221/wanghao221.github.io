@@ -1,0 +1,44 @@
+// Loading
+.loader {
+  @include fillPosition();
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity .3s ease;
+  background: url("../images/ui/cover.jpg");
+  background-size: 1024px 550px;
+
+  .loading & {
+    opacity: 1;
+  }
+
+  .zombie-loader {
+    &:before {
+      content: '';
+      display: block;
+      animation-duration: 0.7s!important;
+    }
+    transform: scale(0.5);
+    margin-bottom: 20px;
+  }
+
+  span {
+    animation: flash 1.8s ease infinite;
+    color: #ffffff;
+    font-size: 9px;
+    position: absolute;
+    bottom: 62px;
+    right: 72px;
+  }
+
+  .loading-char {
+    background: radial-gradient(ellipse at center, black 0%, rgba(246, 246, 246, 0) 50%);
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+  }
+}
