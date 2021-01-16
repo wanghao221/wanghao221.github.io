@@ -42,7 +42,7 @@ function game() {
 				streakCounter.innerHTML = streak;
 			} else {
 				streak = 0;
-				dur = 2000;
+				dur = 4000;
 				streakCounter.innerHTML = "";
 			}
 
