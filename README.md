@@ -11,4 +11,4 @@ Tamagotchi养成游戏：https://wanghao221.github.io/game/Tamagotchi-Game.html 
 
 
 游戏网站首页：<br>
-https://wanghao221.github.io/game/Game-Index.html
+https://wanghao221.github.io/game/
