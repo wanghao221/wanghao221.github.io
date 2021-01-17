@@ -6,7 +6,7 @@ A blog built with Hexo and GitHub, I used it to put some small games, based on H
 飞机躲避障碍物： https://wanghao221.github.io/game/Aircraft-Avoid-Obstacles.html <br>
 爱吹风的狮子：https://wanghao221.github.io/game/Lion-Game.html <br>
 圣诞老人撑杆过桥：https://wanghao221.github.io/game/Santa-Claus.html <br>
-Tamagotchi养成游戏：wanghao221.github.io/game/Tamagotchi-Game.html <br>
+Tamagotchi养成游戏：https://wanghao221.github.io/game/Tamagotchi-Game.html <br>
 果冻跳跳糖：https://wanghao221.github.io/game/tiaotiaotang.html <br>
 
 
