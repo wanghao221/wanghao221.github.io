@@ -19,6 +19,8 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210118113210964.gif#pic_center)
 
+7.2048小游戏：[https://wanghao221.github.io/game/2048.html](https://wanghao221.github.io/game/2048.html)
+
 ---
 
 #### 2.软件工具百度云地址
