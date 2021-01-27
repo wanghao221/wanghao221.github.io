@@ -17,14 +17,14 @@
     <div class="main">
 
         <div class="score">
-			<h5 style="margin: 0;">游戏首页：<a href="https://wanghao221.github.io/game/" target="_blank">Wanghao | Game</a></h5>
+			
 			<h5 style="margin: 0;">技术支持：<a href="https://blog.csdn.net/qq_44273429/" target="_blank">海拥CSDN博客</a></h5>
             <button id="js-start">开始鸭</button>
             <button id="js-hint">提示</button>
             <button id="js-chint">关闭提示</button>
 			
             <div class="score-num">分数:<span id="js-score-num">0</span><br></div>
-            <div class="score-time">剩余时间:<span id="js-time-down">00:00</span><h5>游戏首页：<a href="https://wanghao221.github.io/game/" target="_blank">Wanghao | Game</a></h5></div>
+            <div class="score-time">剩余时间:<span id="js-time-down">00:00</span></div>
 			
 			
         </div>
@@ -35,7 +35,7 @@
         
         
     </div>
-
+    <div><h5 style="margin: 0;">游<br>戏<br>首<br>页<br>：<br><a href="https://wanghao221.github.io/game/" target="_blank">W<br>a<br>n<br>g<br>h<br>a<br>o<br> | <br>G<br>a<br>m<br>e</a></h5></div>
     <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/zepto.min.1.1.6.js"></script>
     <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/easeljs-0.8.2.min.js"></script>
     <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/tweenjs-0.6.2.min.js"></script>
@@ -49,7 +49,7 @@
         },function (score) {  //score changed calback
             $("#js-score-num").text(score)
         }, function (score) {   //game end calback
-            alert("gameover!!,You get " + score + " points");
+            alert("时间到啦!!,你获得了 " + score + " 分");
         }, function (time) {
             $("#js-time-down").text(time)
         });
