@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="i3bVXD3ywVilJt3b0Denbr2n41les3p8ciIldduw4X0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wanghao | XiaoXiaoLe</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/index.css" />
+    
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="score">
+			
+			<h5 style="margin: 0;">技术支持：<a href="https://blog.csdn.net/qq_44273429/" target="_blank">海拥CSDN博客</a></h5>
+            <button id="js-start">开始鸭</button>
+            <button id="js-hint">提示</button>
+            <button id="js-chint">关闭提示</button>
+			
+            <div class="score-num">分数:<span id="js-score-num">0</span><br></div>
+            <div class="score-time">剩余时间:<span id="js-time-down">00:00</span></div>
+			
+			
+        </div>
+        <div class="game-container">
+			
+            <canvas id="js-game" width="300" height="250" class="gamecanvas"></canvas>
+        </div>
+        
+        
+    </div>
+    <div><h5 style="margin: 0;">游<br>戏<br>首<br>页<br>：<br><a href="https://wanghao221.github.io/game/" target="_blank">W<br>a<br>n<br>g<br>h<br>a<br>o<br> | <br>G<br>a<br>m<br>e</a></h5></div>
+    <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/zepto.min.1.1.6.js"></script>
+    <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/easeljs-0.8.2.min.js"></script>
+    <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/tweenjs-0.6.2.min.js"></script>
+    <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/res/hammer.min.js"></script>
+    <script src="https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/xiaoxiaole.js"></script>
+    <script type="text/javascript">
+
+        var xxl = new XiaoXiaoLe("js-game", "https://yicheng-irun.github.io/Elimination-games-XiaoXiaoLe/img",{
+            col:6,  //6 columns
+            row:5,  //5 rows
+        },function (score) {  //score changed calback
+            $("#js-score-num").text(score)
+        }, function (score) {   //game end calback
+            alert("时间到啦!!,你获得了 " + score + " 分");
+        }, function (time) {
+            $("#js-time-down").text(time)
+        });
+
+        $("#js-start").click(function () {
+            xxl.start();
+        })
+        $("#js-hint").click(function () {
+            xxl.hint();
+        })
+        $("#js-chint").click(function () {
+            xxl.closeHint();
+        })
+
+    </script>
+
+</body>
+</html>
