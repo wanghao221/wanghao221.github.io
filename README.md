@@ -1,9 +1,8 @@
 #### 1.小游戏集合：
 
-(注：源代码关注啦啦啦好想biu点什么回复对应数字编号即可)
+(注：源代码关注微信公众号啦啦啦好想biu点什么回复对应数字编号即可)
 
-1.飞机躲避障碍物<br>
-演示地址：[https://wanghao221.github.io/game/Aircraft-Avoid-Obstacles.html](https://wanghao221.github.io/game/Aircraft-Avoid-Obstacles.html)<br>
+1.飞机躲避障碍物：[https://wanghao221.github.io/game/Aircraft-Avoid-Obstacles.html](https://wanghao221.github.io/game/Aircraft-Avoid-Obstacles.html)
 
 
 2.爱吹风的狮子：[https://wanghao221.github.io/game/Lion-Game.html](https://wanghao221.github.io/game/Lion-Game.html)
@@ -14,12 +13,23 @@
 
 5.果冻跳跳糖：[https://wanghao221.github.io/game/tiaotiaotang.html](https://wanghao221.github.io/game/tiaotiaotang.html)
 
-
-6.网站404页面小游戏<br>演示地址：[https://wanghao221.github.io/404.html](https://wanghao221.github.io/404.html)
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210118113210964.gif#pic_center)
+6.网站404页面小游戏：[https://wanghao221.github.io/404.html](https://wanghao221.github.io/404.html)
 
 7.2048小游戏：[https://wanghao221.github.io/game/2048.html](https://wanghao221.github.io/game/2048.html)
+
+8.勇猛的兔子疯狂奔跑:[https://wanghao221.github.io/game/tutu.html](https://wanghao221.github.io/game/tutu.html)
+
+9.打地鼠小游戏：[https://wanghao221.github.io/game/Catch-A-Mole.html](https://wanghao221.github.io/game/Catch-A-Mole.html)
+
+10.射箭游戏：[https://wanghao221.github.io/game/sheji.html](https://wanghao221.github.io/game/sheji.html)
+
+11.2048小游戏：[https://wanghao221.github.io/game/2048.html](https://wanghao221.github.io/game/2048.html)
+
+12.消消乐：[https://wanghao221.github.io/game/xiaoxiaole](https://wanghao221.github.io/game/xiaoxiaole)
+
+13.可爱的开关：[https://wanghao221.github.io/game/switch.html](https://wanghao221.github.io/game/switch.html)
+
+
 
 ---
 
@@ -38,18 +48,7 @@ typora| [网盘地址](https://pan.baidu.com/s/1mA5NYA28l0wPFO5zl_wyVQ)|n7ea
 
 ---
 
-#### 3.分享几个外国不错的文章站：
-
-http://www.articlesbase.com <br>
-http://www.articlecity.com <br>
-http://www.articlecube.com <br>
-http://www.goarticles.com <br>
-http://www.ezinearticles.com <br>
-http://www.magportal.com <br>
-
----
-
-#### 4.分享几个外国不错的文章站：
+#### 3.分享几个外国不错的图床站：
 ##### 1.图仓
 📝简介
   全球多地数据备份保障数据安全
