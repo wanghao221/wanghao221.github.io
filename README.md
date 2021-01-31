@@ -15,7 +15,7 @@
 
 6.网站404页面小游戏：[https://wanghao221.github.io/404.html](https://wanghao221.github.io/404.html)
 
-7.2048小游戏：[https://wanghao221.github.io/game/2048.html](https://wanghao221.github.io/game/2048.html)
+7.Catch-A-Mole:[https://wanghao221.github.io/game/Catch-A-Mole](https://wanghao221.github.io/game/Catch-A-Mole)
 
 8.勇猛的兔子疯狂奔跑:[https://wanghao221.github.io/game/tutu.html](https://wanghao221.github.io/game/tutu.html)
 
@@ -29,6 +29,9 @@
 
 13.可爱的开关：[https://wanghao221.github.io/game/switch.html](https://wanghao221.github.io/game/switch.html)
 
+14.2048小游戏响应式：[https://wanghao221.github.io/game/2048-Responsive.html](https://wanghao221.github.io/game/2048-Responsive.html)
+
+15.飞翔的恐龙: [https://wanghao221.github.io/game/Flappy-Dino.html](https://wanghao221.github.io/game/Flappy-Dino.html)
 
 
 ---
