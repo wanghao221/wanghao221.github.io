@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Wanghao | Pok&eacute;mon</title>
+		<style>
+			body {
+			  background-image: linear-gradient(rgba(255, 233, 145, 0.6), rgba(255, 233, 145, 0.8));
+			}
+			
+			h1, h2 {
+			  text-align: center;
+			}
+			  
+			img {
+			  max-width: 100%;
+			}
+			
+			#title-img {
+			  width: 50%;
+			  display: block;
+			  margin: auto;
+			}
+			  
+			.selection-group {
+			  display: flex;
+			  flex-direction: row;
+			  flex-wrap: wrap;
+			  justify-content: space-around;
+			  align-items: center;
+			}
+			  
+			.monster {
+			  position: relative;
+			  margin: 5px;
+			  width: 100px;
+			  height: 100px;
+			  background: #FFF;
+			  border: solid 1px #000;
+			  border-radius: 10px;
+			  overflow: hidden;
+			}
+			
+			.monster:hover {
+			  cursor: pointer;
+			}
+			  
+			.monster-icon {
+			  width: 100%;
+			  position: absolute;
+			}
+			
+			.monster-name-bg {
+			  position: absolute;
+			  bottom: 0;
+			  width: 100%;
+			  height: 30px;
+			  background-color: rgba(255, 255, 255, 0.8);
+			}
+			
+			.monster-name {
+			  display: flex;
+			  flex-direction: row;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			  align-items: center;
+			  font-size: 16px;
+			  line-height: 0;
+			}
+			  
+			.selected {
+			  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+			}
+			
+			#battle-zone {
+			  position: relative;
+			  display: flex;
+			  flex-direction: row;
+			  justify-content: space-around;
+			  align-items: center;
+			}
+			  
+			#user {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  width: 45%;
+			  height: 400px;
+			}
+			
+			#user .hp-outline{
+			  bottom: 0
+			}
+			  
+			#player-section {
+			  position: absolute;
+			  bottom: 0;
+			  left: 0;
+			  width: 20%;
+			}
+			
+			#player-monster-section {
+			  position: absolute;
+			  top: 20%;
+			  bottom: 20%;
+			  right: 0;
+			  width: 30%;
+			}
+			  
+			#player-monster-image {
+			  position: absolute;
+			  bottom: 10%;
+			}
+			
+			figcaption {
+			  font-size: 20;
+			  text-align: center;
+			  font-weight: bold;
+			}
+			  
+			#opponent {
+			  position: absolute;
+			  top: 0;
+			  right: 0;
+			  width: 45%;
+			  height: 400px;
+			}
+			  
+			#opponent .hp-outline {
+			  top: 0
+			}
+			  
+			#opponent-section {
+			  position: absolute;
+			  top: 0;
+			  right: 0;
+			  width: 20%;
+			}
+			  
+			#opponent-monster-section {
+			  position: absolute;
+			  top: 20%;
+			  bottom: 20%;
+			  left: 0;
+			  width: 30%;
+			}
+			  
+			#opponent-monster-image {
+			  position: absolute;
+			  top: 10%;
+			}
+			
+			.hp-outline {
+			  position: absolute;
+			  width: 100%;
+			  height: 10px;
+			  background: #FFF;
+			  border: solid 1px black;
+			  border-radius: 10px;
+			  overflow: hidden;
+			}
+			  
+			.hp-bar {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  background-image: linear-gradient(rgba(255, 60, 100, 0.7), rgba(255, 60, 100, 1));
+			  height: 100%;
+			  width: 100%;
+			}
+			
+			.healing-glow {
+			  opacity: 0.8;
+			}
+			  
+			#button-zone {
+			  position: relative;
+			  margin-top: 400px;
+			  display: flex;
+			  flex-direction: row;
+			  justify-content: center;
+			  align-items: flex-start;
+			}
+			
+			#attack-options, #heal-options, #pass-options {
+			  margin-top: 10px;
+			  margin-bottom: 10px;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: flex-start;
+			  align-items: stretch;
+			  width: 20%;
+			}
+			
+			button {
+			  margin: 2px;
+			  padding-top: 5px;
+			  padding-bottom: 5px;
+			  border-radius: 10px;
+			  border: none;
+			  font-size: 16px;
+			  font-weight: bold;
+			}
+			  
+			#attack-options button {
+			    background-image: linear-gradient(rgba(255, 100, 60, 0.7), rgba(255, 100, 60, 1));
+			}
+			  
+			#heal-options button {
+			    background-image: linear-gradient(rgba(60, 100, 255, 0.7), rgba(60, 100, 255, 1));
+			}
+			      
+			#pass-options button {
+			    background-image: linear-gradient(rgba(150, 150, 150, 0.7), rgba(150, 150, 150, 1));
+			}
+			
+			#description-zone {
+			  display: block;
+			  margin: auto;
+			  width: 97%;
+			  height: 50px;
+			  background: #FFF;
+			  border: solid 1px black;
+			  border-radius: 10px;
+			  overflow: hidden;
+			}
+			
+			.battle-description {
+			  text-align: center;
+			}
+			
+			footer {
+			  text-align: center;
+			}
+			
+			@media (max-device-width: 800px) {
+			  #user {
+			    height: 200px;
+			  }
+			    
+			  #player-section {
+			    width: 30%;
+			  }
+			    
+			  #opponent {
+			    height: 200px;
+			  }
+			    
+			  #opponent-section {
+			    width: 30%;
+			  }
+			    
+			  figcaption {
+			    font-size: 14px;
+			  }
+			    
+			  .hp-outline {
+			    height: 5px;
+			  }
+			    
+			  #button-zone {
+			    margin-top: 200px;
+			  }
+			  
+			  button {
+			    padding-top: 10px;
+			    padding-bottom: 10px;
+			  }
+			  
+			  #attack-options, #heal-options, #pass-options {
+			    width: 33%;
+			  }
+			}
+			
+			.animation-target {
+			  -webkit-animation: animation 1500ms linear both;
+			  animation: animation 1500ms linear both;
+			}
+			
+			/* Generated with Bounce.js. Edit at https://goo.gl/RLhtEx */
+			
+			@-webkit-keyframes animation { 
+			  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+			  2.14% { -webkit-transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, 39.128, 0, 0, 1); transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, 39.128, 0, 0, 1); }
+			  2.87% { -webkit-transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, 51.427, 0, 0, 1); transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, 51.427, 0, 0, 1); }
+			  4.27% { -webkit-transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 71.718, 0, 0, 1); transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 71.718, 0, 0, 1); }
+			  5.74% { -webkit-transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, 87.859, 0, 0, 1); transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, 87.859, 0, 0, 1); }
+			  8.48% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, 104.772, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, 104.772, 0, 0, 1); }
+			  8.61% { -webkit-transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, 105.228, 0, 0, 1); transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, 105.228, 0, 0, 1); }
+			  11.48% { -webkit-transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, 109.333, 0, 0, 1); transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, 109.333, 0, 0, 1); }
+			  12.61% { -webkit-transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 108.914, 0, 0, 1); transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 108.914, 0, 0, 1); }
+			  16.82% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 104.22, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 104.22, 0, 0, 1); }
+			  18.89% { -webkit-transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 102.063, 0, 0, 1); transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 102.063, 0, 0, 1); }
+			  20.95% { -webkit-transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, 100.578, 0, 0, 1); transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, 100.578, 0, 0, 1); }
+			  26.29% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 99.377, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 99.377, 0, 0, 1); }
+			  33.23% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.833, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.833, 0, 0, 1); }
+			  33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.84, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.84, 0, 0, 1); }
+			  35.47% { -webkit-transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, 60.81, 0, 0, 1); transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, 60.81, 0, 0, 1); }
+			  36.2% { -webkit-transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, 48.532, 0, 0, 1); transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, 48.532, 0, 0, 1); }
+			  37.6% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 28.268, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 28.268, 0, 0, 1); }
+			  37.64% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 27.842, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 27.842, 0, 0, 1); }
+			  39.07% { -webkit-transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, 12.144, 0, 0, 1); transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, 12.144, 0, 0, 1); }
+			  41.11% { -webkit-transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, -1.865, 0, 0, 1); transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, -1.865, 0, 0, 1); }
+			  41.81% { -webkit-transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, -4.757, 0, 0, 1); transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, -4.757, 0, 0, 1); }
+			  41.94% { -webkit-transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -5.212, 0, 0, 1); transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -5.212, 0, 0, 1); }
+			  44.81% { -webkit-transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, -9.318, 0, 0, 1); transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, -9.318, 0, 0, 1); }
+			  45.95% { -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, -8.901, 0, 0, 1); transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, -8.901, 0, 0, 1); }
+			  50.15% { -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, -4.216, 0, 0, 1); transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, -4.216, 0, 0, 1); }
+			  52.22% { -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -2.062, 0, 0, 1); transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -2.062, 0, 0, 1); }
+			  54.29% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.578, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.578, 0, 0, 1); }
+			  54.32% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.56, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.56, 0, 0, 1); }
+			  55.99% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0.145, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0.145, 0, 0, 1); }
+			  59.63% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, 0.622, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, 0.622, 0, 0, 1); }
+			  66.67% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.16, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.16, 0, 0, 1); }
+			  70.97% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); }
+			  74.44% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.042, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.042, 0, 0, 1); }
+			  87.65% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.002, 0, 0, 1); }
+			  89.32% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.003, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.003, 0, 0, 1); }
+			  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+			}
+			
+			@keyframes animation { 
+			  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+			  2.14% { -webkit-transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, 39.128, 0, 0, 1); transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, 39.128, 0, 0, 1); }
+			  2.87% { -webkit-transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, 51.427, 0, 0, 1); transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, 51.427, 0, 0, 1); }
+			  4.27% { -webkit-transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 71.718, 0, 0, 1); transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 71.718, 0, 0, 1); }
+			  5.74% { -webkit-transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, 87.859, 0, 0, 1); transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, 87.859, 0, 0, 1); }
+			  8.48% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, 104.772, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, 104.772, 0, 0, 1); }
+			  8.61% { -webkit-transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, 105.228, 0, 0, 1); transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, 105.228, 0, 0, 1); }
+			  11.48% { -webkit-transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, 109.333, 0, 0, 1); transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, 109.333, 0, 0, 1); }
+			  12.61% { -webkit-transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 108.914, 0, 0, 1); transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 108.914, 0, 0, 1); }
+			  16.82% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 104.22, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 104.22, 0, 0, 1); }
+			  18.89% { -webkit-transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 102.063, 0, 0, 1); transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 102.063, 0, 0, 1); }
+			  20.95% { -webkit-transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, 100.578, 0, 0, 1); transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, 100.578, 0, 0, 1); }
+			  26.29% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 99.377, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 99.377, 0, 0, 1); }
+			  33.23% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.833, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.833, 0, 0, 1); }
+			  33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.84, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 99.84, 0, 0, 1); }
+			  35.47% { -webkit-transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, 60.81, 0, 0, 1); transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, 60.81, 0, 0, 1); }
+			  36.2% { -webkit-transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, 48.532, 0, 0, 1); transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, 48.532, 0, 0, 1); }
+			  37.6% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 28.268, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 28.268, 0, 0, 1); }
+			  37.64% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 27.842, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, 27.842, 0, 0, 1); }
+			  39.07% { -webkit-transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, 12.144, 0, 0, 1); transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, 12.144, 0, 0, 1); }
+			  41.11% { -webkit-transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, -1.865, 0, 0, 1); transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, -1.865, 0, 0, 1); }
+			  41.81% { -webkit-transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, -4.757, 0, 0, 1); transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, -4.757, 0, 0, 1); }
+			  41.94% { -webkit-transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -5.212, 0, 0, 1); transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, -5.212, 0, 0, 1); }
+			  44.81% { -webkit-transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, -9.318, 0, 0, 1); transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, -9.318, 0, 0, 1); }
+			  45.95% { -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, -8.901, 0, 0, 1); transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, -8.901, 0, 0, 1); }
+			  50.15% { -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, -4.216, 0, 0, 1); transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, -4.216, 0, 0, 1); }
+			  52.22% { -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -2.062, 0, 0, 1); transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, -2.062, 0, 0, 1); }
+			  54.29% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.578, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.578, 0, 0, 1); }
+			  54.32% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.56, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, -0.56, 0, 0, 1); }
+			  55.99% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0.145, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0.145, 0, 0, 1); }
+			  59.63% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, 0.622, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, 0.622, 0, 0, 1); }
+			  66.67% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.16, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.16, 0, 0, 1); }
+			  70.97% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); }
+			  74.44% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.042, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.042, 0, 0, 1); }
+			  87.65% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.002, 0, 0, 1); }
+			  89.32% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.003, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.003, 0, 0, 1); }
+			  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+			}
+			
+			.animation-reverse-target {
+			  -webkit-animation: animation-reverse 1500ms linear both;
+			  animation: animation-reverse 1500ms linear both;
+			}
+			
+			/* Generated with Bounce.js. Edit at https://goo.gl/zNLuBE */
+			
+			@-webkit-keyframes animation-reverse { 
+			  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+			  2.14% { -webkit-transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, -39.128, 0, 0, 1); transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, -39.128, 0, 0, 1); }
+			  2.87% { -webkit-transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, -51.427, 0, 0, 1); transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, -51.427, 0, 0, 1); }
+			  4.27% { -webkit-transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, -71.718, 0, 0, 1); transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, -71.718, 0, 0, 1); }
+			  5.74% { -webkit-transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, -87.859, 0, 0, 1); transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, -87.859, 0, 0, 1); }
+			  8.48% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, -104.772, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, -104.772, 0, 0, 1); }
+			  8.61% { -webkit-transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, -105.228, 0, 0, 1); transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, -105.228, 0, 0, 1); }
+			  11.48% { -webkit-transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, -109.333, 0, 0, 1); transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, -109.333, 0, 0, 1); }
+			  12.61% { -webkit-transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, -108.914, 0, 0, 1); transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, -108.914, 0, 0, 1); }
+			  16.82% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -104.22, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -104.22, 0, 0, 1); }
+			  18.89% { -webkit-transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, -102.063, 0, 0, 1); transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, -102.063, 0, 0, 1); }
+			  20.95% { -webkit-transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -100.578, 0, 0, 1); transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -100.578, 0, 0, 1); }
+			  26.29% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, -99.377, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, -99.377, 0, 0, 1); }
+			  33.23% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.833, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.833, 0, 0, 1); }
+			  33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.84, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.84, 0, 0, 1); }
+			  35.47% { -webkit-transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, -60.81, 0, 0, 1); transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, -60.81, 0, 0, 1); }
+			  36.2% { -webkit-transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, -48.532, 0, 0, 1); transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, -48.532, 0, 0, 1); }
+			  37.6% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -28.268, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -28.268, 0, 0, 1); }
+			  37.64% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -27.842, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -27.842, 0, 0, 1); }
+			  39.07% { -webkit-transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, -12.144, 0, 0, 1); transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, -12.144, 0, 0, 1); }
+			  41.11% { -webkit-transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, 1.865, 0, 0, 1); transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, 1.865, 0, 0, 1); }
+			  41.81% { -webkit-transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, 4.757, 0, 0, 1); transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, 4.757, 0, 0, 1); }
+			  41.94% { -webkit-transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, 5.212, 0, 0, 1); transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, 5.212, 0, 0, 1); }
+			  44.81% { -webkit-transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 9.318, 0, 0, 1); transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 9.318, 0, 0, 1); }
+			  45.95% { -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 8.901, 0, 0, 1); transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 8.901, 0, 0, 1); }
+			  50.15% { -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 4.216, 0, 0, 1); transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 4.216, 0, 0, 1); }
+			  52.22% { -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 2.062, 0, 0, 1); transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 2.062, 0, 0, 1); }
+			  54.29% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.578, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.578, 0, 0, 1); }
+			  54.32% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.56, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.56, 0, 0, 1); }
+			  55.99% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, -0.145, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, -0.145, 0, 0, 1); }
+			  59.63% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.622, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.622, 0, 0, 1); }
+			  66.67% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.16, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.16, 0, 0, 1); }
+			  70.97% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.013, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.013, 0, 0, 1); }
+			  74.44% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.042, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.042, 0, 0, 1); }
+			  87.65% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); }
+			  89.32% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.003, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.003, 0, 0, 1); }
+			  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+			}
+			
+			@keyframes animation-reverse { 
+			  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+			  2.14% { -webkit-transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, -39.128, 0, 0, 1); transform: matrix3d(1.133, 0, 0, 0, 0, 1.133, 0, 0, 0, 0, 1, 0, -39.128, 0, 0, 1); }
+			  2.87% { -webkit-transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, -51.427, 0, 0, 1); transform: matrix3d(1.152, 0, 0, 0, 0, 1.152, 0, 0, 0, 0, 1, 0, -51.427, 0, 0, 1); }
+			  4.27% { -webkit-transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, -71.718, 0, 0, 1); transform: matrix3d(1.165, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, -71.718, 0, 0, 1); }
+			  5.74% { -webkit-transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, -87.859, 0, 0, 1); transform: matrix3d(1.155, 0, 0, 0, 0, 1.155, 0, 0, 0, 0, 1, 0, -87.859, 0, 0, 1); }
+			  8.48% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, -104.772, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1.106, 0, 0, 0, 0, 1, 0, -104.772, 0, 0, 1); }
+			  8.61% { -webkit-transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, -105.228, 0, 0, 1); transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, -105.228, 0, 0, 1); }
+			  11.48% { -webkit-transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, -109.333, 0, 0, 1); transform: matrix3d(1.051, 0, 0, 0, 0, 1.051, 0, 0, 0, 0, 1, 0, -109.333, 0, 0, 1); }
+			  12.61% { -webkit-transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, -108.914, 0, 0, 1); transform: matrix3d(1.035, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, -108.914, 0, 0, 1); }
+			  16.82% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -104.22, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, -104.22, 0, 0, 1); }
+			  18.89% { -webkit-transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, -102.063, 0, 0, 1); transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, -102.063, 0, 0, 1); }
+			  20.95% { -webkit-transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -100.578, 0, 0, 1); transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, -100.578, 0, 0, 1); }
+			  26.29% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, -99.377, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, -99.377, 0, 0, 1); }
+			  33.23% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.833, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.833, 0, 0, 1); }
+			  33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.84, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -99.84, 0, 0, 1); }
+			  35.47% { -webkit-transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, -60.81, 0, 0, 1); transform: matrix3d(0.868, 0, 0, 0, 0, 0.868, 0, 0, 0, 0, 1, 0, -60.81, 0, 0, 1); }
+			  36.2% { -webkit-transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, -48.532, 0, 0, 1); transform: matrix3d(0.848, 0, 0, 0, 0, 0.848, 0, 0, 0, 0, 1, 0, -48.532, 0, 0, 1); }
+			  37.6% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -28.268, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -28.268, 0, 0, 1); }
+			  37.64% { -webkit-transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -27.842, 0, 0, 1); transform: matrix3d(0.835, 0, 0, 0, 0, 0.835, 0, 0, 0, 0, 1, 0, -27.842, 0, 0, 1); }
+			  39.07% { -webkit-transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, -12.144, 0, 0, 1); transform: matrix3d(0.846, 0, 0, 0, 0, 0.846, 0, 0, 0, 0, 1, 0, -12.144, 0, 0, 1); }
+			  41.11% { -webkit-transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, 1.865, 0, 0, 1); transform: matrix3d(0.88, 0, 0, 0, 0, 0.88, 0, 0, 0, 0, 1, 0, 1.865, 0, 0, 1); }
+			  41.81% { -webkit-transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, 4.757, 0, 0, 1); transform: matrix3d(0.894, 0, 0, 0, 0, 0.894, 0, 0, 0, 0, 1, 0, 4.757, 0, 0, 1); }
+			  41.94% { -webkit-transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, 5.212, 0, 0, 1); transform: matrix3d(0.897, 0, 0, 0, 0, 0.897, 0, 0, 0, 0, 1, 0, 5.212, 0, 0, 1); }
+			  44.81% { -webkit-transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 9.318, 0, 0, 1); transform: matrix3d(0.949, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 9.318, 0, 0, 1); }
+			  45.95% { -webkit-transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 8.901, 0, 0, 1); transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 8.901, 0, 0, 1); }
+			  50.15% { -webkit-transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 4.216, 0, 0, 1); transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 4.216, 0, 0, 1); }
+			  52.22% { -webkit-transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 2.062, 0, 0, 1); transform: matrix3d(1.006, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 2.062, 0, 0, 1); }
+			  54.29% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.578, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.578, 0, 0, 1); }
+			  54.32% { -webkit-transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.56, 0, 0, 1); transform: matrix3d(1.008, 0, 0, 0, 0, 1.008, 0, 0, 0, 0, 1, 0, 0.56, 0, 0, 1); }
+			  55.99% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, -0.145, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, -0.145, 0, 0, 1); }
+			  59.63% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.622, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.622, 0, 0, 1); }
+			  66.67% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.16, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.16, 0, 0, 1); }
+			  70.97% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.013, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.013, 0, 0, 1); }
+			  74.44% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.042, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.042, 0, 0, 1); }
+			  87.65% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); }
+			  89.32% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.003, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.003, 0, 0, 1); }
+			  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+			}
+		</style>
+		<script  src="https://unpkg.com/vue@2.2.1"></script>
+		<link rel="icon" type="image/x-icon" href="https://pokemondb.net/favicon.ico" />
+	</head>
+	<body>
+		<div id="app">
+		  <img id="title-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/Pokemon.png">
+		  <h1>宠物精灵对战</h1>
+		  <template v-if="!selected.player.name" id="player-selector">
+		    <h2>选择你的玩家:</h2>
+		    <div class="selection-group">
+		      <div v-for="player in players" class="monster" :id="player.name" @click="selectedPlayer($event)">
+		        <img class="monster-icon" :src="player.image">
+		        <div class="monster-name-bg">
+		          <h3 class="monster-name">{{ player.name }}</h3>
+		        </div>
+		      </div>
+		    </div>
+		  </template>
+		  <template v-if="!selected.monster.name" id="monster-selector">
+		    <h2>选择你的 Pok&eacute;mon:</h2>
+		    <div class="selection-group">
+		      <div v-for="monster in monsters" class="monster" @click="selectedMonster($event)" :id="monster.name">
+		        <img class="monster-icon" :src="monster.image">
+		        <div class="monster-name-bg">
+		          <h3 class="monster-name">{{ monster.name }}</h3>
+		        </div>
+		      </div>
+		    </div>
+		  </template>
+		  <template v-if="selected.player.name && selected.monster.name">
+		    <div id="battle-zone">
+		    <div id="user">
+		      <figure id="player-section">
+		        <img :src="selected.player.image" id="player-image">
+		        <figcaption>{{ selected.player.name }}</figcaption>
+		      </figure>
+		      <div id="player-monster-section">
+		        <img :src="selected.monster.image" id="player-monster-image">
+		        <div class="hp-outline">
+		            <div class="hp-bar" :style="hpWidthPlayer"></div>
+		          </div>
+		      </div>
+		    </div>
+		    <div id="opponent">
+		      <figure id="opponent-section">
+		        <img :src="opponent.player.image" id="opponent-image">
+		        <figcaption>{{ opponentName }}</figcaption>
+		      </figure>
+		      <div id="opponent-monster-section">
+		        <img :src="opponent.monster.image" id="opponent-monster-image">
+		        <div class="hp-outline">
+		          <div class="hp-bar" :style="hpWidthOpponent"></div>
+		        </div>
+		      </div>
+		    </div>
+		    </div>
+		    <div id="button-zone">
+		      <div id="attack-options">
+		        <button v-for="attack in selected.monster.attacks" @click="attackMove($event)" :id="attack.name">{{ attack.name }}</button>
+		      </div>
+		      <div id="heal-options">
+		        <button id="heal" @click="healMove($event)">Heal</button>
+		      </div>
+		      <div id="pass-options">
+		        <button id="pass" @click="passMove($event)">Pass</button>
+		      </div>
+		    </div>
+		    <div id="description-zone">
+		      <p v-if="beginning" class="battle-description">{{ opponent.player.name }} wants to fight!</p>
+		      <p v-if="userAttacking" class="battle-description">{{ selected.monster.name }} used {{ userAttackName }}!</p>
+		      <p v-if="enemyAttacking" class="battle-description">Enemy {{ opponent.monster.name }} used {{ enemyAttackName }}!</p>
+		      <p v-if="userHeal" class="battle-description">{{ selected.player.name }} gave {{ selected.monster.name }} a potion!</p>
+		      <p v-if="userWait" class="battle-description">{{ selected.monster.name }} waited.</p>
+		    </div>
+		  </template>
+		</div>
+		<footer><p>Game created by <a href="https://blog.csdn.net/qq_44273429">海拥CSDN博客</a>. Pok&eacute;mon 通过统计 <a href="https://pokemondb.net/">Pok&eacute;mon Database</a>. Pok&eacute;mon likenesses & names © 1995-2021 Nintendo/Game Freak.</p></footer>
+		<script>
+			new Vue({
+			  el: '#app',
+			  data: {
+			    beginning: false,
+			    userAttacking: false,
+			    userAttackName: '',
+			    enemyAttacking: false,
+			    enemyAttackName: '',
+			    userHeal: false,
+			    userWait: false,
+			    selected: {
+			      player: {
+			        name: '',
+			        image: ''
+			      },
+			      monster: {
+			        name: '',
+			        image: '',
+			        types: [],
+			        attacks: [],
+			        hp: 300
+			      }
+			    },
+			    opponent: {
+			      player: {
+			        name: '',
+			        image: ''
+			      },
+			      monster: {
+			        name: '',
+			        image: '',
+			        types: [],
+			        attacks: [],
+			        hp: 300
+			      }
+			    },
+			    players: [
+			      {
+			        name: 'Youngster',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/player.png',
+			      },
+			      {
+			        name: 'Lass',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/player-1.png'
+			      }
+			    ],
+			    monsters: [
+			      {
+			        name: 'Bulbasaur',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/bullbasaur.png',
+			        types: ['grass', 'poison',],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Vine Whip',
+			            moveType: 'grass',
+			            category: 'special',
+			            power: 45,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Razor Leaf',
+			            moveType: 'grass',
+			            category: 'special',
+			            power: 55,
+			            accuracy: 95
+			          },
+			          {
+			            name: 'Solar Beam',
+			            moveType: 'grass',
+			            category: 'special',
+			            power: 120,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Charmander',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/charmander.png',
+			        types: ['fire'],
+			        attacks: [
+			          {
+			            name: 'Scratch',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Ember',
+			            moveType: 'fire',
+			            category: 'special',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Slash',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 70,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Flamethrower',
+			            moveType: 'fire',
+			            category: 'special',
+			            power: 90,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Squirtle',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/squirtle.png',
+			        types: ['water'],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Bubble',
+			            moveType: 'water',
+			            category: 'special',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Bite',
+			            moveType: 'dark',
+			            category: 'special',
+			            power: 60,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Hydro Pump',
+			            moveType: 'water',
+			            category: 'special',
+			            power: 110,
+			            accuracy: 80
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Caterpie',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/caterpie.png',
+			        types: ['bug'],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Weedle',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/weedle.png',
+			        types: ['bug', 'poison'],
+			        attacks: [
+			          {
+			            name: 'Poison Sting',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 15,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Pidgey',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/pidgey.png',
+			        types: ['normal', 'flying'],
+			        attacks: [
+			          {
+			            name: 'Gust',
+			            moveType: 'flying',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Quick Attack',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Wing Attack',
+			            moveType: 'flying',
+			            category: 'normal',
+			            power: 60,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Rattata',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/rattata.png',
+			        types: ['normal'],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Quick Attack',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Hyper Fang',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 80,
+			            accuracy: 90
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Pikachu',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/pikachu-2.png',
+			        types: ['electric'],
+			        attacks: [
+			          {
+			            name: '雷声震动',
+			            moveType: 'electric',
+			            category: 'special',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: '快速攻击',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: '迅速',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 60,
+			            accuracy: 100
+			          },
+			          {
+			            name: '雷',
+			            moveType: 'electric',
+			            category: 'special',
+			            power: 110,
+			            accuracy: 70
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Jigglypuff',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/jigglypuff.png',
+			        types: ['normal', 'fairy'],
+			        attacks: [
+			          {
+			            name: 'Pound',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Double Slap',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 15,
+			            accuracy: 85
+			          },
+			          {
+			            name: 'Body Slam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 85,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Double-Edge',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 120,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Zubat',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/zubat.png',
+			        types: ['poison', 'flying'],
+			        attacks: [
+			          {
+			            name: 'Leech Life',
+			            moveType: 'bug',
+			            category: 'normal',
+			            power: 20,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Bite',
+			            moveType: 'dark',
+			            category: 'special',
+			            power: 60,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Wing Attack',
+			            moveType: 'flying',
+			            category: 'normal',
+			            power: 60,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Venonat',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/venonat.png',
+			        types: ['bug', 'poison'],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Leech Life',
+			            moveType: 'bug',
+			            category: 'normal',
+			            power: 20,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Psybeam',
+			            moveType: 'psychic',
+			            category: 'special',
+			            power: 65,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Psychic',
+			            moveType: 'psychic',
+			            category: 'special',
+			            power: 90,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Meowth',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/meowth.png',
+			        types: ['normal'],
+			        attacks: [
+			          {
+			            name: 'Scratch',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Bite',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 60,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Payday',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Slash',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 70,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Psyduck',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/psyduck.png',
+			        types: ['water'],
+			        attacks: [
+			          {
+			            name: 'Scratch',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Confusion',
+			            moveType: 'psychic',
+			            category: 'special',
+			            power: 50,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Fury Swipes',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 18,
+			            accuracy: 80
+			          },
+			          {
+			            name: 'Hydro Pump',
+			            moveType: 'water',
+			            category: 'special',
+			            power: 110,
+			            accuracy: 80
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Mankey',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/mankey.png',
+			        types: ['fighting'],
+			        attacks: [
+			          {
+			            name: 'Scratch',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Karate Chop',
+			            moveType: 'fighting',
+			            category: 'normal',
+			            power: 50,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Fury Swipes',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 18,
+			            accuracy: 80
+			          },
+			          {
+			            name: 'Thrash',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 120,
+			            accuracy: 100
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Bellsprout',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/bellsprout.png',
+			        types: ['grass', 'poison'],
+			        attacks: [
+			          {
+			            name: 'Vine Whip',
+			            moveType: 'grass',
+			            category: 'special',
+			            power: 45,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Acid',
+			            moveType: 'poison',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'RazorLeaf',
+			            moveType: 'grass',
+			            category: 'special',
+			            power: 55,
+			            accuracy: 95
+			          },
+			          {
+			            name: 'Slam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 80,
+			            accuracy: 75
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Eevee',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/eevee.png',
+			        types: ['normal'],
+			        attacks: [
+			          {
+			            name: 'Tackle',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Quick Attack',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 40,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Bite',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 60,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Take Down',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 90,
+			            accuracy: 85
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Snorlax',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/snorlax.png',
+			        types: ['normal'],
+			        attacks: [
+			          {
+			            name: 'Headbutt',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 70,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Body Slam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 85,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Double-Edge',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 120,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Hyper Beam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 150,
+			            accuracy: 90
+			          }
+			        ]
+			      },
+			      {
+			        name: 'Dratini',
+			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/dratini.png',
+			        types: ['dragon'],
+			        attacks: [
+			          {
+			            name: 'Wrap',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 15,
+			            accuracy: 100
+			          },
+			          {
+			            name: 'Slam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 80,
+			            accuracy: 75
+			          },
+			          {
+			            name: 'Hyper Beam',
+			            moveType: 'normal',
+			            category: 'normal',
+			            power: 150,
+			            accuracy: 90
+			          }
+			        ]
+			      },
+			    ]
+			  },
+			  computed: {
+			    opponentName: function () {
+			      var vm = this;
+			      var opponentIndex = parseInt(Math.random() * (vm.monsters.length - 1));
+			      vm.opponent.monster.name = vm.monsters[opponentIndex].name;
+			      vm.opponent.monster.image = vm.monsters[opponentIndex].image;
+			      vm.opponent.monster.types = vm.monsters[opponentIndex].types;
+			      vm.opponent.monster.attacks = vm.monsters[opponentIndex].attacks;
+			      if (vm.selected.player.name == 'Lass') {
+			        vm.opponent.player.name = vm.players[0].name;
+			        vm.opponent.player.image = vm.players[0].image;
+			        vm.beginning = true;
+			        setTimeout(function () {
+			          vm.beginning = false;
+			        }, 2000);
+			        return vm.opponent.player.name;
+			      }
+			      if (vm.selected.player.name == 'Youngster') {
+			        vm.opponent.player.name = vm.players[1].name;
+			        vm.opponent.player.image = vm.players[1].image;
+			        vm.beginning = true;
+			        setTimeout(function () {
+			          vm.beginning = false;
+			        }, 2000);
+			        return vm.opponent.player.name;
+			      }
+			    },
+			    hpWidthPlayer: function () {
+			      var vm = this;
+			      if (vm.selected.monster.hp <= 0) {
+			        if (confirm(vm.selected.monster.name + ' fainted!\n' + vm.opponent.player.name + ' won the battle. Do you want to play again?')) {
+			          window.location.reload(true);
+			        } else {
+			          return {width: 0}
+			        }
+			      } else {
+			        return {
+			          width: parseInt(100 * (vm.selected.monster.hp / 300)) + '%'
+			        }
+			      }
+			    },
+			    hpWidthOpponent: function () {
+			      var vm = this;
+			      if (vm.opponent.monster.hp <= 0) {
+			        if (confirm('Enemy ' + vm.opponent.monster.name + ' fainted!\n' + 'You won the battle. Do you want to play again?')) {
+			          window.location.reload(true);
+			        } else {
+			          return {width: 0}
+			        }
+			      } else {
+			        return {
+			          width: parseInt(100 * (vm.opponent.monster.hp / 300)) + '%'
+			        }
+			      }
+			    }
+			  },
+			  methods: {
+			    selectedPlayer: function(event) {
+			      var vm = this;
+			      event.currentTarget.classList.add('selected');
+			      vm.selected.player.name = event.currentTarget.id;
+			      for (var player in vm.players) {
+			        if (vm.players[player].name == vm.selected.player.name) {
+			          vm.selected.player.image = vm.players[player].image;
+			        }
+			      }
+			    },
+			    selectedMonster: function (event) {
+			      var vm = this;
+			      event.currentTarget.classList.add('selected');
+			      vm.selected.monster.name = event.currentTarget.id;
+			      for (var monster in vm.monsters) {
+			        if (vm.monsters[monster].name == vm.selected.monster.name) {
+			          vm.selected.monster.image = vm.monsters[monster].image;
+			          vm.selected.monster.types = vm.monsters[monster].types;
+			          vm.selected.monster.attacks = vm.monsters[monster].attacks;
+			        }
+			      }
+			    },
+			    attackMove: function (event) {
+			      var vm = this;
+			      var attackName = event.currentTarget.id;
+			      vm.userAttackName = attackName;
+			      vm.userAttacking = true;
+			      var userMonster = document.getElementById('player-monster-image');
+			      var attackDamage;
+			      for (var attack in vm.selected.monster.attacks) {
+			        if (vm.selected.monster.attacks[attack].name == attackName) {
+			          attackDamage = vm.selected.monster.attacks[attack].power;
+			        }
+			      }
+			      userMonster.classList.add('animation-target');
+			      var opponentMonster = document.getElementById('opponent-monster-image');
+			      var opponentAttackIndex = parseInt(Math.random() * (vm.opponent.monster.attacks.length - 1));
+			      var opponentAttackName = vm.opponent.monster.attacks[opponentAttackIndex].name;
+			      var opponentAttackPower = vm.opponent.monster.attacks[opponentAttackIndex].power;
+			      vm.enemyAttackName = opponentAttackName;
+			      setTimeout(function() {
+			        userMonster.classList.remove('animation-target');
+			        vm.opponent.monster.hp -= attackDamage;
+			        vm.userAttacking = false;
+			      }, 1500);
+			      setTimeout(function() {
+			        opponentMonster.classList.add('animation-reverse-target');
+			        vm.enemyAttacking = true;
+			      }, 2500);
+			      setTimeout(function() {
+			        opponentMonster.classList.remove('animation-reverse-target');
+			        vm.selected.monster.hp -= opponentAttackPower;
+			        vm.enemyAttacking = false;
+			      }, 4000);
+			    },
+			    healMove: function (event) {
+			      var vm = this;
+			      var attackName = event.currentTarget.id;
+			      var userMonster = document.getElementById('player-monster-image');
+			      userMonster.classList.add('healing-glow');
+			      var opponentMonster = document.getElementById('opponent-monster-image');
+			      var opponentAttackIndex = parseInt(Math.random() * (vm.opponent.monster.attacks.length - 1));
+			      var opponentAttackName = vm.opponent.monster.attacks[opponentAttackIndex].name;
+			      var opponentAttackPower = vm.opponent.monster.attacks[opponentAttackIndex].power;
+			      vm.enemyAttackName = opponentAttackName;
+			      vm.userHeal = true;
+			      setTimeout(function() {
+			        userMonster.classList.remove('healing-glow');
+			        vm.selected.monster.hp += 50;
+			        vm.userHeal = false;
+			      }, 1500);
+			      setTimeout(function() {
+			        opponentMonster.classList.add('animation-reverse-target');
+			        vm.enemyAttacking = true;
+			      }, 2500);
+			      setTimeout(function() {
+			        opponentMonster.classList.remove('animation-reverse-target');
+			        vm.selected.monster.hp -= opponentAttackPower;
+			        vm.enemyAttacking = false;
+			      }, 4000);
+			    },
+			    passMove: function (event) {
+			      var vm = this;
+			      var opponentMonster = document.getElementById('opponent-monster-image');
+			      var opponentAttackIndex = parseInt(Math.random() * (vm.opponent.monster.attacks.length - 1));
+			      var opponentAttackName = vm.opponent.monster.attacks[opponentAttackIndex].name;
+			      var opponentAttackPower = vm.opponent.monster.attacks[opponentAttackIndex].power;
+			      vm.enemyAttackName = opponentAttackName;
+			      vm.userWait = true;
+			      setTimeout(function() {
+			        vm.userWait = false;
+			      }, 1500);
+			      setTimeout(function() {
+			        opponentMonster.classList.add('animation-reverse-target');
+			        vm.enemyAttacking = true;
+			      }, 2500);
+			      setTimeout(function() {
+			        opponentMonster.classList.remove('animation-reverse-target');
+			        vm.selected.monster.hp -= opponentAttackPower;
+			        vm.enemyAttacking = false;
+			      }, 4000);
+			    }
+			  }
+			});
+		</script>
+		
+	</body>
+</html>
