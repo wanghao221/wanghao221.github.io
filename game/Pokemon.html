@@ -787,7 +787,7 @@
 			            accuracy: 100
 			          },
 			          {
-			            name: '雷',
+			            name: '十万伏特',
 			            moveType: 'electric',
 			            category: 'special',
 			            power: 110,
@@ -1163,7 +1163,7 @@
 			    hpWidthPlayer: function () {
 			      var vm = this;
 			      if (vm.selected.monster.hp <= 0) {
-			        if (confirm(vm.selected.monster.name + ' fainted!\n' + vm.opponent.player.name + ' won the battle. Do you want to play again?')) {
+			        if (confirm(vm.selected.monster.name + ' 被击败了!\n' + vm.opponent.player.name + ' 赢得了战斗胜利. 你想再玩一次吗?')) {
 			          window.location.reload(true);
 			        } else {
 			          return {width: 0}
@@ -1177,7 +1177,7 @@
 			    hpWidthOpponent: function () {
 			      var vm = this;
 			      if (vm.opponent.monster.hp <= 0) {
-			        if (confirm('Enemy ' + vm.opponent.monster.name + ' fainted!\n' + 'You won the battle. Do you want to play again?')) {
+			        if (confirm('敌人 ' + vm.opponent.monster.name + ' 被击败了!\n' + '你赢得了战斗胜利. 你想再玩一次吗?')) {
 			          window.location.reload(true);
 			        } else {
 			          return {width: 0}
