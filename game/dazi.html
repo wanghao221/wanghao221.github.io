@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Wanghao | 打字</title>
+		<style>
+			.button1 {
+			    background-image: linear-gradient(135deg, #008aff, #86d472);
+			    border-radius: 6px;
+			    box-sizing: border-box;
+			    color: #ffffff;
+			    display: block;
+			    height: 50px;
+			    font-size: 1.2em;
+			    font-weight: 600;
+			    padding: 4px;
+			    position: relative;
+			    text-decoration: none;
+			    width: 7em;
+			    z-index: 2;
+			   cursor: pointer;
+			  }
+			 .button1:hover {
+			    color: #fff;
+			  }
+			 .button1 .btn1 {
+			    align-items: center;
+			    background: #0e0e10;
+			    border-radius: 6px;
+			    display: flex;
+			    justify-content: center;
+			    height: 100%;
+			    transition: background 0.5s ease;
+			    width: 100%;
+			  }
+			 .button1:hover .btn1 {
+			    background: transparent;
+			 }
+		</style>
+	</head>
+	<body>
+		<center>
+		  <a class="button1" onclick="typeWriter()">
+		   <span class="btn1">Run Effect</span>
+		  </a>
+		  <p id="hieu_ung_danh_chu" ></p>
+		  <script>
+			  var i = 0;
+			   var vanBan =' 小猫咪也不知道它会掉毛，它只是想蹭你，我也不知道我会烦你，我只是很想你 ';
+			   var tocDo = 200;
+			  function typeWriter() {
+			     if (i < vanBan.length) {
+			       document.getElementById("hieu_ung_danh_chu").innerHTML += vanBan.charAt(i);
+			       i++;
+			       setTimeout(typeWriter, tocDo );
+			     }
+			   }
+		  </script>
+		  </center>
+	</body>
+</html>
