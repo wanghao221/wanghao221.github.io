@@ -522,7 +522,7 @@
 		    </div>
 		  </template>
 		</div>
-		<footer><p>Game created by <a href="https://blog.csdn.net/qq_44273429">海拥CSDN博客</a>. Pok&eacute;mon 通过统计 <a href="https://pokemondb.net/">Pok&eacute;mon Database</a>. Pok&eacute;mon likenesses & names © 1995-2021 Nintendo/Game Freak.</p></footer>
+		<footer><p>Game created by <a href="https://blog.csdn.net/qq_44273429">海拥CSDN博客</a>. Pok&eacute;mon 通过统计 <a href="https://pokemondb.net/">Pok&eacute;mon Database</a>. 神奇宝贝的肖像和名字 © 1999-2021 Wanghao/Game </p></footer>
 		<script>
 			new Vue({
 			  el: '#app',
@@ -572,33 +572,33 @@
 			    ],
 			    monsters: [
 			      {
-			        name: 'Bulbasaur',
+			        name: '妙蛙种子',
 			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/bullbasaur.png',
 			        types: ['grass', 'poison',],
 			        attacks: [
 			          {
-			            name: 'Tackle',
+			            name: '抢断',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 40,
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Vine Whip',
+			            name: '藤条',
 			            moveType: 'grass',
 			            category: 'special',
 			            power: 45,
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Razor Leaf',
+			            name: '剃刀叶',
 			            moveType: 'grass',
 			            category: 'special',
 			            power: 55,
 			            accuracy: 95
 			          },
 			          {
-			            name: 'Solar Beam',
+			            name: '太阳光束',
 			            moveType: 'grass',
 			            category: 'special',
 			            power: 120,
@@ -607,12 +607,12 @@
 			        ]
 			      },
 			      {
-			        name: 'Charmander',
+			        name: '小火龙',
 			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/charmander.png',
 			        types: ['fire'],
 			        attacks: [
 			          {
-			            name: 'Scratch',
+			            name: '刮痧',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 40,
@@ -626,14 +626,14 @@
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Slash',
+			            name: '消减',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 70,
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Flamethrower',
+			            name: '喷火',
 			            moveType: 'fire',
 			            category: 'special',
 			            power: 90,
@@ -761,7 +761,7 @@
 			        ]
 			      },
 			      {
-			        name: 'Pikachu',
+			        name: '皮卡丘',
 			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/pikachu-2.png',
 			        types: ['electric'],
 			        attacks: [
@@ -787,7 +787,7 @@
 			            accuracy: 100
 			          },
 			          {
-			            name: '雷',
+			            name: '十万伏特',
 			            moveType: 'electric',
 			            category: 'special',
 			            power: 110,
@@ -894,19 +894,19 @@
 			        ]
 			      },
 			      {
-			        name: 'Meowth',
+			        name: '喵喵',
 			        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/724333/meowth.png',
 			        types: ['normal'],
 			        attacks: [
 			          {
-			            name: 'Scratch',
+			            name: '刮痧',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 40,
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Bite',
+			            name: '咬',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 60,
@@ -920,7 +920,7 @@
 			            accuracy: 100
 			          },
 			          {
-			            name: 'Slash',
+			            name: '削减',
 			            moveType: 'normal',
 			            category: 'normal',
 			            power: 70,
@@ -1163,7 +1163,7 @@
 			    hpWidthPlayer: function () {
 			      var vm = this;
 			      if (vm.selected.monster.hp <= 0) {
-			        if (confirm(vm.selected.monster.name + ' fainted!\n' + vm.opponent.player.name + ' won the battle. Do you want to play again?')) {
+			        if (confirm(vm.selected.monster.name + ' 被击败了!\n' + vm.opponent.player.name + ' 赢得了战斗胜利. 你想再玩一次吗?')) {
 			          window.location.reload(true);
 			        } else {
 			          return {width: 0}
@@ -1177,7 +1177,7 @@
 			    hpWidthOpponent: function () {
 			      var vm = this;
 			      if (vm.opponent.monster.hp <= 0) {
-			        if (confirm('Enemy ' + vm.opponent.monster.name + ' fainted!\n' + 'You won the battle. Do you want to play again?')) {
+			        if (confirm('敌人 ' + vm.opponent.monster.name + ' 被击败了!\n' + '你赢得了战斗胜利. 你想再玩一次吗?')) {
 			          window.location.reload(true);
 			        } else {
 			          return {width: 0}
