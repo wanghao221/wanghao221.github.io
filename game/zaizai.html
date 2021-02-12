@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Wanghao | Zaizai</title>	
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="icon" type="image/x-icon" href="../favicon.ico"/>
+		<meta name="keywords" content="Zaizai" />
+		<meta name="description" content="Zaizai" /> 
+		<meta name="author" content="海拥(https://blog.csdn.net/qq_44273429/)" />
+		<meta name="copyright" content="海拥(https://blog.csdn.net/qq_44273429/)" />
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+			*,
+			*::before,
+			*::after {
+			  margin: 0;
+			  padding: 0;
+			  box-sizing: border-box;
+			}
+			
+			html {
+			  font-size: 62.5%;
+			}
+			
+			body {
+			  font-size: 1.6rem;
+			  font-family: "Fjalla One", sans-serif;
+			  min-height: 100vh;
+			  background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			}
+			
+			.container {
+			  max-width: 50rem;
+			  text-align: center;
+			}
+			
+			.m-left {
+			  margin-left: 1rem;
+			}
+			
+			.title {
+			  font-size: 4rem;
+			  line-height: 1.1;
+			  text-transform: uppercase;
+			  text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a;
+			  transform: rotate(-10deg);
+			  margin-bottom: 3rem;
+			}
+			@media screen and (min-width: 768px) {
+			  .title {
+			    font-size: 6rem;
+			    text-shadow: 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a, 5px 6px #533d4a;
+			  }
+			}
+			@media screen and (min-width: 900px) {
+			  .title {
+			    font-size: 8rem;
+			    margin-bottom: 8rem;
+			  }
+			}
+			.title div {
+			  letter-spacing: -3px;
+			}
+			.title div:first-child {
+			  color: #e55643;
+			}
+			.title div:nth-child(2) {
+			  color: #2b9f5e;
+			}
+			.title div:nth-child(3) {
+			  color: #f1c83c;
+			}
+			.title span {
+			  position: relative;
+			  opacity: 0;
+			  visibility: hidden;
+			}
+			
+			.btn {
+			  display: inline-block;
+			  cursor: pointer;
+			  border: none;
+			  outline: none;
+			  background-color: transparent;
+			  padding: 1rem;
+			  color: #e55643;
+			  font-size: 1.6rem;
+			  text-transform: uppercase;
+			  text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a;
+			  transform: skew(-10deg) rotate(-10deg) translateX(2rem);
+			  opatity: 0;
+			  visibility: 0;
+			}
+			@media screen and (min-width: 768px) {
+			  .btn {
+			    font-size: 1.8rem;
+			  }
+			}
+			@media screen and (min-width: 900px) {
+			  .btn {
+			    font-size: 2rem;
+			    transform: skew(-10deg) rotate(-10deg) translateX(4rem);
+			  }
+			}
+		</style>	
+	</head>
+	<body>
+			
+		<section class="container">
+			<h1 class="title">
+				<div>	
+					<span>想</span>
+					<span>变</span>
+					<span>成</span>
+					<span>崽</span>
+					<span>崽</span>
+				</div>
+				<div>
+					<span>每</span>
+					<span>天</span>
+					<span>挠</span>
+					<span>挠</span>
+					<span>你</span>
+					<span>裤</span>
+					<span>脚</span>
+				</div>
+				<div>
+					<span>这</span>
+					<span>样</span>
+					<span>你</span>
+					<span>还</span>
+					<span>会</span>
+					<span>把</span>
+					<span class='m-left'>我</span>
+					<span>抱</span>
+					<span>一</span>
+					<span>抱</span>
+				</div>
+			</h1>
+			<button class="btn" id="restart-btn">Restart</button>
+		</section>
+		
+		<footer>Created by <a href=	https://blog.csdn.net/qq_44273429" target='blank'>海拥✘</a> @2021.
+		</footer>	
+
+	</body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+	<script>
+		const titleSpans = document.querySelectorAll(".title span");
+		const restartBtn = document.getElementById("restart-btn");
+		
+		const titleAnimation = () => {
+			const tl = gsap.timeline();
+			tl
+				.set(restartBtn, { opacity: 0, visibility: "hidden" })
+				.staggerFromTo(
+					titleSpans,
+					0.5,
+					{ opacity: 0, bottom: -80, ease: "back.easeOut" },
+					{ opacity: 1, visibility: "visible", bottom: 0, ease: "back.easeOut" },
+					0.25
+				)
+				.to(restartBtn, 0.5, { opacity: 1, visibility: "visible" });
+		};
+		
+		titleAnimation();
+		
+		restartBtn.addEventListener("click", titleAnimation);
+		
+	</script>
+</html>
