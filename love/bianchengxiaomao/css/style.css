@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Fjalla One", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 50rem;
+  text-align: center;
+}
+
+.m-left {
+  margin-left: 1rem;
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a;
+  transform: rotate(-10deg);
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 6rem;
+    text-shadow: 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a, 5px 6px #533d4a;
+  }
+}
+@media screen and (min-width: 900px) {
+  .title {
+    font-size: 8rem;
+    margin-bottom: 8rem;
+  }
+}
+.title div {
+  letter-spacing: -3px;
+}
+.title div:first-child {
+  color: #e55643;
+}
+.title div:nth-child(2) {
+  color: #2b9f5e;
+}
+.title div:nth-child(3) {
+  color: #f1c83c;
+}
+.title span {
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 1rem;
+  color: #e55643;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a;
+  transform: skew(-10deg) rotate(-10deg) translateX(2rem);
+  opatity: 0;
+  visibility: 0;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .btn {
+    font-size: 2rem;
+    transform: skew(-10deg) rotate(-10deg) translateX(4rem);
+  }
+}
