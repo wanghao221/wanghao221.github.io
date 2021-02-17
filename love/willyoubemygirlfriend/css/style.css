@@ -1,0 +1,206 @@
+/*
+Awesome Lea Verou's Heart Pattern Background
+---- */
+
+body {
+	background: radial-gradient(
+			circle closest-side at 60% 43%,
+			#323232 26%,
+			rgba(187, 0, 51, 0) 27%
+		),
+		radial-gradient(
+			circle closest-side at 40% 43%,
+			#323232 26%,
+			rgba(187, 0, 51, 0) 27%
+		),
+		radial-gradient(
+			circle closest-side at 40% 22%,
+			#373737 45%,
+			rgba(221, 51, 85, 0) 46%
+		),
+		radial-gradient(
+			circle closest-side at 60% 22%,
+			#373737 45%,
+			rgba(221, 51, 85, 0) 46%
+		),
+		radial-gradient(
+			circle closest-side at 50% 35%,
+			#373737 30%,
+			rgba(221, 51, 85, 0) 31%
+		),
+		radial-gradient(
+				circle closest-side at 60% 43%,
+				#323232 26%,
+				rgba(187, 0, 51, 0) 27%
+			)
+			50px 50px,
+		radial-gradient(
+				circle closest-side at 40% 43%,
+				#323232 26%,
+				rgba(187, 0, 51, 0) 27%
+			)
+			50px 50px,
+		radial-gradient(
+				circle closest-side at 40% 22%,
+				#3c3c3c 45%,
+				rgba(221, 51, 85, 0) 46%
+			)
+			50px 50px,
+		radial-gradient(
+				circle closest-side at 60% 22%,
+				#3c3c3c 45%,
+				rgba(221, 51, 85, 0) 46%
+			)
+			50px 50px,
+		radial-gradient(
+				circle closest-side at 50% 35%,
+				#3c3c3c 30%,
+				rgba(221, 51, 85, 0) 31%
+			)
+			50px 50px;
+	background-color: #323232;
+	background-size: 100px 100px;
+	font-family: "Lato", sans-serif;
+}
+
+
+.centered {
+	width: 100%;
+	margin: 30vh auto;
+	text-align: center;
+}
+
+.centered h4 {
+	color: #ffffff;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+label {
+	height: 40px;
+	width: auto;
+	padding: 10px 40px;
+	display: inline-block;
+	cursor: pointer;
+	margin: 0 20px;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 1.5em;
+	line-height: 1.5em;
+	text-transform: uppercase;
+	transition: all 0.25s ease-in-out;
+}
+
+label:hover {
+	transform: scale(1.1, 1.1);
+}
+
+.no {
+	background-color: #d8124b;
+}
+
+.yes {
+	background-color: #12d890;
+}
+
+.answer--yes,
+.answer--no {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.answer--yes {
+	background-image: url("https://media.giphy.com/media/a3IWyhkEC0p32/giphy.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.answer--no {
+	background-image: url("https://media.giphy.com/media/QBEhpJHrv7poQ/giphy.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input.yes[type="checkbox"]:checked ~ .answer--yes {
+	visibility: visible;
+	opacity: 100;
+}
+
+input.no[type="checkbox"]:checked ~ .answer--no {
+	visibility: visible;
+	opacity: 100;
+}
+
+/*
+Signature
+---- */
+
+.signature {
+	position: absolute;
+	margin: auto;
+	bottom: 0;
+	top: auto;
+	width: 95%;
+}
+
+.signature p {
+	text-align: center;
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 0.85em;
+	color: #ffffff;
+}
+
+.signature .much-heart {
+	display: inline-block;
+	position: relative;
+	margin: 0 4px;
+	height: 10px;
+	width: 10px;
+	background: #d8124b;
+	border-radius: 4px;
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.signature .much-heart::before,
+.signature .much-heart::after {
+	display: block;
+	content: "";
+	position: absolute;
+	margin: auto;
+	height: 10px;
+	width: 10px;
+	border-radius: 5px;
+	background: #d8124b;
+	top: -4px;
+}
+
+.signature .much-heart::after {
+	bottom: 0;
+	top: auto;
+	left: -4px;
+}
+
+.signature a {
+	color: #d8124b;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.signature a:hover {
+	color: coral;
+	text-decoration: none;
+	font-weight: bold;
+}
