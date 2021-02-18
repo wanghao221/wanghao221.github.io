@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~embed~sandbox-startup.10f5f18b4.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/sandbox-startup.788fc841a.js"></script>
+
+<script src="//codesandbox.io/static/browserfs8/browserfs.min.js" type="text/javascript"></script>
+
+<script>
+  window.process = BrowserFS.BFSRequire('process');
+  window.Buffer = BrowserFS.BFSRequire('buffer').Buffer;
+</script>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        cursor: url(./pick.svg), auto;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        padding: 20px;
+        margin: 0 auto;
+      }
+
+      .guitar {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @keyframes vibrate {
+        0% {
+          transform: translateY(-2px);
+        }
+        50% {
+          transform: translateY(2px);
+        }
+        100% {
+          transform: translateY(-2px);
+        }
+      }
+      .string {
+        transform: translateY(0);
+      }
+      .string.vibrating {
+        animation: vibrate 0.05s infinite;
+      }
+    </style>
+    <link rel="manifest" href="https://rf7cr.csb.app/manifest.json">
+  </head>
+  <body>
+    <div class="container">
+      <svg
+        id="guitar"
+        class="guitar"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 2400 800"
+        preserveAspectRatio="xMidYMid meet"
+        width="2400"
+        height="800"
+      >
+        <defs>
+          <linearGradient id="fretboard" x1="42%" y1="0%" x2="0%" y2="90%">
+            <stop offset="0%" style="stop-color: rgb(56, 53, 53);" />
+            <stop offset="100%" style="stop-color: rgb(56, 49, 43);" />
+          </linearGradient>
+
+          <linearGradient
+            id="fredboardBorder"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop offset="0%" style="stop-color: rgb(111, 111, 111);" />
+            <stop offset="53%" style="stop-color: rgb(255, 255, 255);" />
+            <stop offset="100%" style="stop-color: rgb(160, 160, 160);" />
+          </linearGradient>
+
+          <linearGradient id="fret" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color: rgb(122, 117, 113);" />
+            <stop offset="100%" style="stop-color: rgb(56, 49, 43);" />
+          </linearGradient>
+
+          <filter id="dropshadow" height="400%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feOffset dx="4" dy="4" result="offsetblur" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="1.5" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <polygon
+          points="
+      -10,300 1860,300 1950,230 2380,400
+      1950,570 1860,500 -10,500
+      "
+          fill="url(#fretboard)"
+          stroke-width="10"
+          stroke="url(#fredboardBorder)"
+          style="filter: url(#dropshadow);"
+          stroke-linejoin="round"
+        />
+
+        <path
+          d="
+        M110 305 110 495 M220 305 220 495 M330 305 330 495 M440 305 440 495
+        M550 305 550 495 M660 305 660 495 M770 305 770 495 M880 305 880 495
+        M990 305 990 495 M1100 305 1100 495 M1210 305 1210 495 M1320 305 1320 495
+        M1430 305 1430 495 M1540 305 1540 495 M1650 305 1650 495 M1760 305 1760 495
+        M1858 305 1858 495
+      "
+          stroke-width="10"
+          stroke="rgb(122, 117, 113)"
+        />
+
+        <rect
+          class="string"
+          x="0"
+          y="324.3"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+        <rect
+          class="string"
+          x="0"
+          y="353.6"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+        <rect
+          class="string"
+          x="0"
+          y="382.9"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+        <rect
+          class="string"
+          x="0"
+          y="412.2"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+        <rect
+          class="string"
+          x="0"
+          y="441.5"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+        <rect
+          class="string"
+          x="0"
+          y="470.8"
+          width="1864"
+          height="5"
+          fill="#ccc"
+        />
+
+        <polygon points="1863,324.3 1980,290 1980,295 1863,329.3" fill="#ccc" />
+        <polygon points="1863,353.6 2065,330 2065,335 1863,358.6" fill="#ccc" />
+        <polygon points="1863,382.9 2150,365 2150,370 1863,387.9" fill="#ccc" />
+        <polygon points="1863,412.2 2150,445 2150,450 1863,417.2" fill="#ccc" />
+        <polygon points="1863,441.5 2065,475 2065,480 1863,446.5" fill="#ccc" />
+        <polygon points="1863,470.8 1980,505 1980,510 1863,475.8" fill="#ccc" />
+
+        <circle
+          cx="1980"
+          cy="510"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+        <circle
+          cx="2065"
+          cy="480"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+        <circle
+          cx="2150"
+          cy="445"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+        <circle
+          cx="2150"
+          cy="365"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+        <circle
+          cx="2065"
+          cy="330"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+        <circle
+          cx="1980"
+          cy="290"
+          r="20"
+          fill="url(#fretboard)"
+          stroke-width="15"
+          stroke="url(#fredboardBorder)"
+        />
+      </svg>
+    </div>
+
+    <script>
+      function main() {
+        const noteMap = [
+          [
+            "Ab3",
+            "G3 ",
+            "Gb3",
+            "F3 ",
+            "E3 ",
+            "Eb3",
+            "D3 ",
+            "Db3",
+            "C3 ",
+            "B2 ",
+            "Bb2",
+            "A2 ",
+            "Ab2",
+            "G2 ",
+            "Gb2",
+            "F2 ",
+            "E2 "
+          ],
+          [
+            "Db4",
+            "C4 ",
+            "B3 ",
+            "Bb3",
+            "A3 ",
+            "Ab3",
+            "G3 ",
+            "Gb3",
+            "F3 ",
+            "E3 ",
+            "Eb3",
+            "D3 ",
+            "Db3",
+            "C3 ",
+            "B2 ",
+            "Bb2",
+            "A2 "
+          ],
+          [
+            "Gb4",
+            "F4 ",
+            "E4 ",
+            "Eb4",
+            "D4 ",
+            "Db4",
+            "C4 ",
+            "B3 ",
+            "Bb3",
+            "A3 ",
+            "Ab3",
+            "G3 ",
+            "Gb3",
+            "F3 ",
+            "E3 ",
+            "Eb3",
+            "D3 "
+          ],
+          [
+            "B4 ",
+            "Bb4",
+            "A4 ",
+            "Ab4",
+            "G4 ",
+            "Gb4",
+            "F4 ",
+            "E4 ",
+            "Eb4",
+            "D4 ",
+            "Db4",
+            "C4 ",
+            "B3 ",
+            "Bb3",
+            "A3 ",
+            "Ab3",
+            "G3 "
+          ],
+          [
+            "Eb5",
+            "D5 ",
+            "Db5",
+            "C5 ",
+            "B4 ",
+            "Bb4",
+            "A4 ",
+            "Ab4",
+            "G4 ",
+            "Gb3",
+            "F4 ",
+            "E4 ",
+            "Eb4",
+            "D4 ",
+            "Db4",
+            "C4 ",
+            "B3 "
+          ],
+          [
+            "Ab5",
+            "G5 ",
+            "Gb5",
+            "F5 ",
+            "E5 ",
+            "Eb5",
+            "D5 ",
+            "Db5",
+            "C5 ",
+            "B4 ",
+            "Bb4",
+            "A4 ",
+            "Ab4",
+            "G4 ",
+            "Gb4",
+            "F4 ",
+            "E4 "
+          ]
+        ];
+
+        let isPlaying = false;
+
+        const stringVibrationTimes = [0, 0, 0, 0, 0, 0];
+        const strings = Array.from(document.querySelectorAll(".string"));
+
+        setInterval(() => {
+          strings.forEach((stringEl, key) => {
+            if (stringVibrationTimes[key] > 0) {
+              stringEl.classList.add("vibrating");
+            } else {
+              stringEl.classList.remove("vibrating");
+            }
+
+            stringVibrationTimes[key] -= 50;
+
+            if (stringVibrationTimes[key] < 0) {
+              stringVibrationTimes[key] = 0;
+            }
+          });
+        }, 50);
+
+        const soundFontUrl = "./sound/";
+        function playNote(stringKey, note, force = false) {
+          if (isPlaying || force) {
+            const audio = new Audio(soundFontUrl + note.trim() + ".mp3");
+            audio.play();
+
+            stringVibrationTimes[stringKey] = 3000;
+          }
+        }
+
+        window.addEventListener("mousedown", () => {
+          isPlaying = true;
+        });
+
+        window.addEventListener("mouseup", () => {
+          isPlaying = false;
+        });
+
+        const svg = document.querySelector("#guitar");
+
+        noteMap.forEach((string, stringKey) => {
+          string.forEach((note, noteKey) => {
+            const area = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "rect"
+            );
+            area.setAttribute("x", noteKey * 110);
+            area.setAttribute("y", 315 + 29.3 * stringKey);
+            area.setAttribute("width", 110);
+            area.setAttribute("height", 20);
+            area.setAttribute("fill", "#fff");
+            area.setAttribute("opacity", "0");
+            area.addEventListener("click", () => {
+              playNote(stringKey, note, true);
+            });
+            area.addEventListener("mouseover", () => {
+              playNote(stringKey, note, false);
+            });
+            area.addEventListener("mouseover", () => {
+              playNote(stringKey, note, false);
+            });
+
+            svg.appendChild(area);
+          });
+        });
+      }
+
+      window.addEventListener("load", () => {
+        main();
+      });
+    </script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~codemirror-editor~monaco-editor~sandbox.e68dd7bee.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/common-sandbox.71780db40.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~sandbox.b5f1eee3a.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~sandbox.4c1b5e5ac.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/default~app~embed~sandbox.55382de0a.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/sandbox.ca51da3ec.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/banner.bab7510b3.js"></script>
+  <script>
+window.__SANDBOX_DATA__ = {
+  data: {"transpiledModules":{"/index.html:":{"query":"","module":{"path":"/index.html","code":"\u003c!DOCTYPE html>\n\u003chtml>\n  \u003chead>\n    \u003cstyle>\n      body {\n        padding: 0;\n        margin: 0;\n        width: 100%;\n        background-color: #f0f0f0;\n        cursor: url(./pick.svg), auto;\n      }\n\n      .container {\n        width: 100%;\n        max-width: 1280px;\n        padding: 20px;\n        margin: 0 auto;\n      }\n\n      .guitar {\n        max-width: 100%;\n        height: auto;\n      }\n\n      @keyframes vibrate {\n        0% {\n          transform: translateY(-2px);\n        }\n        50% {\n          transform: translateY(2px);\n        }\n        100% {\n          transform: translateY(-2px);\n        }\n      }\n      .string {\n        transform: translateY(0);\n      }\n      .string.vibrating {\n        animation: vibrate 0.05s infinite;\n      }\n    \u003c/style>\n  \u003c/head>\n  \u003cbody>\n    \u003cdiv class=\"container\">\n      \u003csvg\n        id=\"guitar\"\n        class=\"guitar\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        version=\"1.1\"\n        viewBox=\"0 0 2400 800\"\n        preserveAspectRatio=\"xMidYMid meet\"\n        width=\"2400\"\n        height=\"800\"\n      >\n        \u003cdefs>\n          \u003clinearGradient id=\"fretboard\" x1=\"42%\" y1=\"0%\" x2=\"0%\" y2=\"90%\">\n            \u003cstop offset=\"0%\" style=\"stop-color: rgb(56, 53, 53);\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: rgb(56, 49, 43);\" />\n          \u003c/linearGradient>\n\n          \u003clinearGradient\n            id=\"fredboardBorder\"\n            x1=\"0%\"\n            y1=\"0%\"\n            x2=\"0%\"\n            y2=\"100%\"\n          >\n            \u003cstop offset=\"0%\" style=\"stop-color: rgb(111, 111, 111);\" />\n            \u003cstop offset=\"53%\" style=\"stop-color: rgb(255, 255, 255);\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: rgb(160, 160, 160);\" />\n          \u003c/linearGradient>\n\n          \u003clinearGradient id=\"fret\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n            \u003cstop offset=\"0%\" style=\"stop-color: rgb(122, 117, 113);\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: rgb(56, 49, 43);\" />\n          \u003c/linearGradient>\n\n          \u003cfilter id=\"dropshadow\" height=\"400%\">\n            \u003cfeGaussianBlur in=\"SourceAlpha\" stdDeviation=\"3\" />\n            \u003cfeOffset dx=\"4\" dy=\"4\" result=\"offsetblur\" />\n            \u003cfeComponentTransfer>\n              \u003cfeFuncA type=\"linear\" slope=\"1.5\" />\n            \u003c/feComponentTransfer>\n            \u003cfeMerge>\n              \u003cfeMergeNode />\n              \u003cfeMergeNode in=\"SourceGraphic\" />\n            \u003c/feMerge>\n          \u003c/filter>\n        \u003c/defs>\n\n        \u003cpolygon\n          points=\"\n      -10,300 1860,300 1950,230 2380,400\n      1950,570 1860,500 -10,500\n      \"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"10\"\n          stroke=\"url(#fredboardBorder)\"\n          style=\"filter: url(#dropshadow);\"\n          stroke-linejoin=\"round\"\n        />\n\n        \u003cpath\n          d=\"\n        M110 305 110 495 M220 305 220 495 M330 305 330 495 M440 305 440 495\n        M550 305 550 495 M660 305 660 495 M770 305 770 495 M880 305 880 495\n        M990 305 990 495 M1100 305 1100 495 M1210 305 1210 495 M1320 305 1320 495\n        M1430 305 1430 495 M1540 305 1540 495 M1650 305 1650 495 M1760 305 1760 495\n        M1858 305 1858 495\n      \"\n          stroke-width=\"10\"\n          stroke=\"rgb(122, 117, 113)\"\n        />\n\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"324.3\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"353.6\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"382.9\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"412.2\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"441.5\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n        \u003crect\n          class=\"string\"\n          x=\"0\"\n          y=\"470.8\"\n          width=\"1864\"\n          height=\"5\"\n          fill=\"#ccc\"\n        />\n\n        \u003cpolygon points=\"1863,324.3 1980,290 1980,295 1863,329.3\" fill=\"#ccc\" />\n        \u003cpolygon points=\"1863,353.6 2065,330 2065,335 1863,358.6\" fill=\"#ccc\" />\n        \u003cpolygon points=\"1863,382.9 2150,365 2150,370 1863,387.9\" fill=\"#ccc\" />\n        \u003cpolygon points=\"1863,412.2 2150,445 2150,450 1863,417.2\" fill=\"#ccc\" />\n        \u003cpolygon points=\"1863,441.5 2065,475 2065,480 1863,446.5\" fill=\"#ccc\" />\n        \u003cpolygon points=\"1863,470.8 1980,505 1980,510 1863,475.8\" fill=\"#ccc\" />\n\n        \u003ccircle\n          cx=\"1980\"\n          cy=\"510\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n        \u003ccircle\n          cx=\"2065\"\n          cy=\"480\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n        \u003ccircle\n          cx=\"2150\"\n          cy=\"445\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n        \u003ccircle\n          cx=\"2150\"\n          cy=\"365\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n        \u003ccircle\n          cx=\"2065\"\n          cy=\"330\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n        \u003ccircle\n          cx=\"1980\"\n          cy=\"290\"\n          r=\"20\"\n          fill=\"url(#fretboard)\"\n          stroke-width=\"15\"\n          stroke=\"url(#fredboardBorder)\"\n        />\n      \u003c/svg>\n    \u003c/div>\n\n    \u003cscript>\n      function main() {\n        const noteMap = [\n          [\n            \"Ab3\",\n            \"G3 \",\n            \"Gb3\",\n            \"F3 \",\n            \"E3 \",\n            \"Eb3\",\n            \"D3 \",\n            \"Db3\",\n            \"C3 \",\n            \"B2 \",\n            \"Bb2\",\n            \"A2 \",\n            \"Ab2\",\n            \"G2 \",\n            \"Gb2\",\n            \"F2 \",\n            \"E2 \"\n          ],\n          [\n            \"Db4\",\n            \"C4 \",\n            \"B3 \",\n            \"Bb3\",\n            \"A3 \",\n            \"Ab3\",\n            \"G3 \",\n            \"Gb3\",\n            \"F3 \",\n            \"E3 \",\n            \"Eb3\",\n            \"D3 \",\n            \"Db3\",\n            \"C3 \",\n            \"B2 \",\n            \"Bb2\",\n            \"A2 \"\n          ],\n          [\n            \"Gb4\",\n            \"F4 \",\n            \"E4 \",\n            \"Eb4\",\n            \"D4 \",\n            \"Db4\",\n            \"C4 \",\n            \"B3 \",\n            \"Bb3\",\n            \"A3 \",\n            \"Ab3\",\n            \"G3 \",\n            \"Gb3\",\n            \"F3 \",\n            \"E3 \",\n            \"Eb3\",\n            \"D3 \"\n          ],\n          [\n            \"B4 \",\n            \"Bb4\",\n            \"A4 \",\n            \"Ab4\",\n            \"G4 \",\n            \"Gb4\",\n            \"F4 \",\n            \"E4 \",\n            \"Eb4\",\n            \"D4 \",\n            \"Db4\",\n            \"C4 \",\n            \"B3 \",\n            \"Bb3\",\n            \"A3 \",\n            \"Ab3\",\n            \"G3 \"\n          ],\n          [\n            \"Eb5\",\n            \"D5 \",\n            \"Db5\",\n            \"C5 \",\n            \"B4 \",\n            \"Bb4\",\n            \"A4 \",\n            \"Ab4\",\n            \"G4 \",\n            \"Gb3\",\n            \"F4 \",\n            \"E4 \",\n            \"Eb4\",\n            \"D4 \",\n            \"Db4\",\n            \"C4 \",\n            \"B3 \"\n          ],\n          [\n            \"Ab5\",\n            \"G5 \",\n            \"Gb5\",\n            \"F5 \",\n            \"E5 \",\n            \"Eb5\",\n            \"D5 \",\n            \"Db5\",\n            \"C5 \",\n            \"B4 \",\n            \"Bb4\",\n            \"A4 \",\n            \"Ab4\",\n            \"G4 \",\n            \"Gb4\",\n            \"F4 \",\n            \"E4 \"\n          ]\n        ];\n\n        let isPlaying = false;\n\n        const stringVibrationTimes = [0, 0, 0, 0, 0, 0];\n        const strings = Array.from(document.querySelectorAll(\".string\"));\n\n        setInterval(() => {\n          strings.forEach((stringEl, key) => {\n            if (stringVibrationTimes[key] > 0) {\n              stringEl.classList.add(\"vibrating\");\n            } else {\n              stringEl.classList.remove(\"vibrating\");\n            }\n\n            stringVibrationTimes[key] -= 50;\n\n            if (stringVibrationTimes[key] \u003c 0) {\n              stringVibrationTimes[key] = 0;\n            }\n          });\n        }, 50);\n\n        const soundFontUrl = \"./sound/\";\n        function playNote(stringKey, note, force = false) {\n          if (isPlaying || force) {\n            const audio = new Audio(soundFontUrl + note.trim() + \".mp3\");\n            audio.play();\n\n            stringVibrationTimes[stringKey] = 3000;\n          }\n        }\n\n        window.addEventListener(\"mousedown\", () => {\n          isPlaying = true;\n        });\n\n        window.addEventListener(\"mouseup\", () => {\n          isPlaying = false;\n        });\n\n        const svg = document.querySelector(\"#guitar\");\n\n        noteMap.forEach((string, stringKey) => {\n          string.forEach((note, noteKey) => {\n            const area = document.createElementNS(\n              \"http://www.w3.org/2000/svg\",\n              \"rect\"\n            );\n            area.setAttribute(\"x\", noteKey * 110);\n            area.setAttribute(\"y\", 315 + 29.3 * stringKey);\n            area.setAttribute(\"width\", 110);\n            area.setAttribute(\"height\", 20);\n            area.setAttribute(\"fill\", \"#fff\");\n            area.setAttribute(\"opacity\", \"0\");\n            area.addEventListener(\"click\", () => {\n              playNote(stringKey, note, true);\n            });\n            area.addEventListener(\"mouseover\", () => {\n              playNote(stringKey, note, false);\n            });\n            area.addEventListener(\"mouseover\", () => {\n              playNote(stringKey, note, false);\n            });\n\n            svg.appendChild(area);\n          });\n        });\n      }\n\n      window.addEventListener(\"load\", () => {\n        main();\n      });\n    \u003c/script>\n  \u003c/body>\n\u003c/html>\n","isBinary":false},"isEntry":true,"isTestFile":false,"sourceEqualsCompiled":false,"childModules":[],"dependencies":[],"initiators":[],"transpilationDependencies":[],"transpilationInitiators":[],"asyncDependencies":[],"warnings":[],"hasMissingDependencies":false,"source":{"fileName":"/index.html","compiledCode":"\nfunction loadResources() {\n}\nif (document.readyState !== 'complete') {\n  window.addEventListener('load', function() { loadResources() });\n} else {\n  loadResources();\n}\n\n\n//# sourceURL=https://rf7cr.csb.app/index.html","sourceEqualsCompiled":false}}},"cachedPaths":{},"version":"https://codesandbox.io/static/js/sandbox.ca51da3ec.js","timestamp":1613517332042,"configurations":{"package":{"path":"/package.json","code":"{\n  \"name\": \"js-guitar\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.html\",\n  \"scripts\": {\n    \"start\": \"parcel index.html --open\",\n    \"build\": \"parcel build index.html\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@babel/core\": \"7.2.0\",\n    \"parcel-bundler\": \"^1.6.1\"\n  },\n  \"keywords\": []\n}","generated":false,"parsed":{"name":"js-guitar","version":"1.0.0","description":"","main":"index.html","scripts":{"start":"parcel index.html --open","build":"parcel build index.html"},"dependencies":{},"devDependencies":{"@babel/core":"7.2.0","parcel-bundler":"^1.6.1"},"keywords":[]}},"sandbox":{"path":"/sandbox.config.json","code":"{\n  \"infiniteLoopProtection\": true,\n  \"hardReloadOnChange\": false,\n  \"view\": \"browser\"\n}","generated":true,"parsed":{"infiniteLoopProtection":true,"hardReloadOnChange":false,"view":"browser"}},"now":{"path":"/vercel.json","code":"{}","generated":true,"parsed":{}},"babel":{"path":"/.babelrc","code":"{\n  \"presets\": [\n    \"env\"\n  ],\n  \"plugins\": [\n    \"transform-runtime\"\n  ],\n  \"parserOpts\": {\n    \"plugins\": [\n      \"dynamicImport\"\n    ]\n  }\n}","generated":true,"parsed":{"presets":["env"],"plugins":["transform-runtime"],"parserOpts":{"plugins":["dynamicImport"]}}},"typescript":{"path":"/tsconfig.json","code":"{\n  \"compilerOptions\": {\n    \"module\": \"commonjs\",\n    \"jsx\": \"preserve\",\n    \"esModuleInterop\": true,\n    \"sourceMap\": true,\n    \"allowJs\": true,\n    \"lib\": [\n      \"es6\",\n      \"dom\"\n    ],\n    \"rootDir\": \"src\",\n    \"moduleResolution\": \"node\"\n  }\n}","generated":true,"parsed":{"compilerOptions":{"module":"commonjs","jsx":"preserve","esModuleInterop":true,"sourceMap":true,"allowJs":true,"lib":["es6","dom"],"rootDir":"src","moduleResolution":"node"}}}},"entry":"/index.html","meta":{},"dependenciesQuery":"%40babel%2Fruntime%407.12.13+node-libs-browser%402.2.1"},
+  latestSha: "F640B4C72BC6B664D41BFCD2B8AD0B626F7627EBB82884F483A36C51DC2D33D3",
+  version: "https://codesandbox.io/static/js/sandbox.ca51da3ec.js"
+};
+
+</script>
+  <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/watermark-button.76f1e5b66.js"></script>
+  </body>
+
+</html>
