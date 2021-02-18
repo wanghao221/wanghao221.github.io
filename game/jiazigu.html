@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~embed~sandbox-startup.10f5f18b4.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/sandbox-startup.788fc841a.js"></script>
+
+<script src="//codesandbox.io/static/browserfs8/browserfs.min.js" type="text/javascript"></script>
+
+<script>
+  window.process = BrowserFS.BFSRequire('process');
+  window.Buffer = BrowserFS.BFSRequire('buffer').Buffer;
+</script>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        padding: 20px;
+        margin: 0 auto;
+      }
+
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+
+      #hihat-head.closed {
+        transform: translateY(10px);
+      }
+
+      .played {
+        transform: translateY(5px);
+      }
+      #bass.played {
+        transform: scale(0.98);
+        transform-origin: 1200px 1200px;
+      }
+      #crash.played {
+        fill: url(#cymbal);
+        transform: rotate(-20deg);
+        transform-origin: 1850px 600px;
+      }
+      #hihat-head.played {
+        fill: url(#cymbal);
+        transform: rotate(5deg);
+        transform-origin: 500px 830px;
+      }
+
+      .img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <link rel="manifest" href="https://4gbd3.csb.app/manifest.json">
+  </head>
+  <body>
+    <div class="container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 2400 1600"
+        preserveAspectRatio="xMidYMid meet"
+        width="2400"
+        height="1600"
+      >
+        <defs>
+          <radialGradient id="head" fx="26%" fy="26%">
+            <stop offset="0%" style="stop-color: #f0ede6;" />
+            <stop offset="100%" style="stop-color: #f5e9c9;" />
+          </radialGradient>
+          <radialGradient id="headPressed" fx="26%" fy="26%">
+            <stop offset="0%" style="stop-color: #e3d8ba;" />
+            <stop offset="100%" style="stop-color: #f5e9c9;" />
+          </radialGradient>
+          <radialGradient id="case" fx="30%" fy="30%">
+            <stop offset="0%" style="stop-color: #82827f;" />
+            <stop offset="100%" style="stop-color: #6b6b64;" />
+          </radialGradient>
+          <linearGradient id="caseColor">
+            <stop offset="0%" style="stop-color: #6193ba;" />
+            <stop offset="20%" style="stop-color: #a8c9e3;" />
+            <stop offset="100%" style="stop-color: #6b6b64;" />
+          </linearGradient>
+          <linearGradient id="cymbal" gradientTransform="rotate(25)">
+            <stop offset="0%" style="stop-color: #ede58c;" />
+            <stop offset="30%" style="stop-color: #f2eec4;" />
+            <stop offset="60%" style="stop-color: #f2eec4;" />
+            <stop offset="100%" style="stop-color: #ede58c;" />
+          </linearGradient>
+        </defs>
+
+        <!-- Hi-Tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1000 700 1001 1200"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 880 700
+      880 820
+      A 1000 1900 0 0 0 1120 820
+      L 1120 700 Z
+    "
+        />
+        <ellipse
+          id="hitom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1000"
+          cy="700"
+          rx="120"
+          ry="20"
+        />
+
+        <!-- Mid-Tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1350 700 1351 1200"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 1220 700
+      1220 860
+      A 1000 1900 0 0 0 1480 860
+      L 1480 700 Z
+    "
+        />
+        <ellipse
+          id="midtom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1350"
+          cy="700"
+          rx="130"
+          ry="20"
+        />
+
+        <!-- Bass drum -->
+        <circle
+          id="bass"
+          fill="url(#head)"
+          cx="1200"
+          cy="1200"
+          r="270"
+          stroke-width="20"
+          stroke="url(#case)"
+        />
+
+        <!-- Snare drum -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 900 910 901 1410 780 1460 M 901 1410 1020 1460"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 710 900
+      710 1050
+      A 950 1700 0 0 0 1110 1050
+      L 1110 900 Z
+    "
+        />
+        <ellipse
+          id="snare"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="910"
+          cy="900"
+          rx="200"
+          ry="50"
+        />
+
+        <!-- Floor tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1700 1200 1740 1480 M 1500 1200 1450 1480"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 1380 1020
+      1380 1350
+      A 950 1700 0 0 0 1820 1350
+      L 1820 1020 Z
+    "
+        />
+        <ellipse
+          id="floortom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1600"
+          cy="1020"
+          rx="220"
+          ry="60"
+        />
+
+        <!-- Hihat -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 500 830 500 1410 580 1460 M 500 1410 430 1460"
+          fill="none"
+        />
+        <ellipse
+          cx="500"
+          cy="830"
+          rx="200"
+          ry="40"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+        />
+        <ellipse
+          id="hihat-head"
+          cx="500"
+          cy="800"
+          rx="200"
+          ry="40"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+        />
+
+        <!-- Crash -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1850 600 1851 1410"
+          fill="none"
+        />
+        <ellipse
+          id="crash"
+          cx="1850"
+          cy="600"
+          rx="300"
+          ry="50"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+          transform="rotate(-15 1850 600)"
+        />
+      </svg>
+
+      <img src="https://4gbd3.csb.app/keyboard.png" class="img" />
+
+      <script>
+        let isShiftPressed = false;
+
+        const hihatHead = document.querySelector("#hihat-head");
+        const hitom = document.querySelector("#hitom");
+        const midtom = document.querySelector("#midtom");
+        const floortom = document.querySelector("#floortom");
+        const snare = document.querySelector("#snare");
+        const crash = document.querySelector("#crash");
+        const bass = document.querySelector("#bass");
+
+        /**
+         * Finds out which drum was played.
+         * @param key
+         * @returns {string|null}
+         */
+        const getInstrument = (key) => {
+          switch (key.toLowerCase()) {
+            case "a":
+              return hihatHead;
+            case "f":
+              return hitom;
+            case "j":
+              return midtom;
+            case "l":
+              return floortom;
+            case "b":
+              return snare;
+            case "o":
+              return crash;
+            case " ":
+              return bass;
+          }
+
+          return null;
+        };
+
+        const timeouts = new Map();
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = true;
+            hihatHead.classList.add("closed");
+            return;
+          }
+
+          const drum = getInstrument(e.key);
+          if (!drum) {
+            return;
+          }
+
+          let sound = sounds.get(drum);
+          if (drum === hihatHead) {
+            sound = isShiftPressed ? sound.closed : sound.open;
+          }
+          sound.pause();
+          sound.currentTime = 0;
+          sound.play();
+
+          drum.classList.add("played");
+          if (timeouts.has(drum)) {
+            clearTimeout(timeouts.get(drum));
+          }
+          timeouts.set(
+            drum,
+            setTimeout(() => {
+              drum.classList.remove("played");
+            }, 100)
+          );
+        });
+
+        document.addEventListener("keyup", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = false;
+            hihatHead.classList.remove("closed");
+          }
+        });
+
+        const sounds = new Map();
+        sounds.set(hihatHead, {
+          open: new Audio("./sounds/Bb2.mp3"),
+          closed: new Audio("./sounds/Gb2.mp3")
+        });
+        sounds.set(hitom, new Audio("https://4gbd3.csb.app/sounds/D3.mp3"));
+        sounds.set(midtom, new Audio("https://4gbd3.csb.app/sounds/B2.mp3"));
+        sounds.set(floortom, new Audio("https://4gbd3.csb.app/sounds/G2.mp3"));
+        sounds.set(snare, new Audio("https://4gbd3.csb.app/sounds/D2.mp3"));
+        sounds.set(crash, new Audio("https://4gbd3.csb.app/sounds/Db3.mp3"));
+        sounds.set(bass, new Audio("https://4gbd3.csb.app/sounds/C2.mp3"));
+      </script>
+    </div>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~codemirror-editor~monaco-editor~sandbox.e68dd7bee.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/common-sandbox.71780db40.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~app~sandbox.b5f1eee3a.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/vendors~sandbox.4c1b5e5ac.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/default~app~embed~sandbox.55382de0a.chunk.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/sandbox.ca51da3ec.js"></script>
+    <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/banner.bab7510b3.js"></script>
+  <script>
+window.__SANDBOX_DATA__ = {
+  data: {"transpiledModules":{"/index.html:":{"query":"","module":{"path":"/index.html","code":"\u003c!DOCTYPE html>\n\u003chtml>\n  \u003chead>\n    \u003cstyle>\n      body {\n        padding: 0;\n        margin: 0;\n        width: 100%;\n        background-color: #f0f0f0;\n      }\n\n      .container {\n        width: 100%;\n        max-width: 1280px;\n        padding: 20px;\n        margin: 0 auto;\n      }\n\n      svg {\n        max-width: 100%;\n        height: auto;\n      }\n\n      #hihat-head.closed {\n        transform: translateY(10px);\n      }\n\n      .played {\n        transform: translateY(5px);\n      }\n      #bass.played {\n        transform: scale(0.98);\n        transform-origin: 1200px 1200px;\n      }\n      #crash.played {\n        fill: url(#cymbal);\n        transform: rotate(-20deg);\n        transform-origin: 1850px 600px;\n      }\n      #hihat-head.played {\n        fill: url(#cymbal);\n        transform: rotate(5deg);\n        transform-origin: 500px 830px;\n      }\n\n      .img {\n        width: auto;\n        height: auto;\n        max-width: 100%;\n      }\n    \u003c/style>\n  \u003c/head>\n  \u003cbody>\n    \u003cdiv class=\"container\">\n      \u003csvg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        version=\"1.1\"\n        viewBox=\"0 0 2400 1600\"\n        preserveAspectRatio=\"xMidYMid meet\"\n        width=\"2400\"\n        height=\"1600\"\n      >\n        \u003cdefs>\n          \u003cradialGradient id=\"head\" fx=\"26%\" fy=\"26%\">\n            \u003cstop offset=\"0%\" style=\"stop-color: #f0ede6;\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: #f5e9c9;\" />\n          \u003c/radialGradient>\n          \u003cradialGradient id=\"headPressed\" fx=\"26%\" fy=\"26%\">\n            \u003cstop offset=\"0%\" style=\"stop-color: #e3d8ba;\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: #f5e9c9;\" />\n          \u003c/radialGradient>\n          \u003cradialGradient id=\"case\" fx=\"30%\" fy=\"30%\">\n            \u003cstop offset=\"0%\" style=\"stop-color: #82827f;\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: #6b6b64;\" />\n          \u003c/radialGradient>\n          \u003clinearGradient id=\"caseColor\">\n            \u003cstop offset=\"0%\" style=\"stop-color: #6193ba;\" />\n            \u003cstop offset=\"20%\" style=\"stop-color: #a8c9e3;\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: #6b6b64;\" />\n          \u003c/linearGradient>\n          \u003clinearGradient id=\"cymbal\" gradientTransform=\"rotate(25)\">\n            \u003cstop offset=\"0%\" style=\"stop-color: #ede58c;\" />\n            \u003cstop offset=\"30%\" style=\"stop-color: #f2eec4;\" />\n            \u003cstop offset=\"60%\" style=\"stop-color: #f2eec4;\" />\n            \u003cstop offset=\"100%\" style=\"stop-color: #ede58c;\" />\n          \u003c/linearGradient>\n        \u003c/defs>\n\n        \u003c!-- Hi-Tom -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 1000 700 1001 1200\"\n          fill=\"none\"\n        />\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          fill=\"url(#caseColor)\"\n          stroke-linejoin=\"round\"\n          d=\"\n      M 880 700\n      880 820\n      A 1000 1900 0 0 0 1120 820\n      L 1120 700 Z\n    \"\n        />\n        \u003cellipse\n          id=\"hitom\"\n          fill=\"url(#head)\"\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          cx=\"1000\"\n          cy=\"700\"\n          rx=\"120\"\n          ry=\"20\"\n        />\n\n        \u003c!-- Mid-Tom -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 1350 700 1351 1200\"\n          fill=\"none\"\n        />\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          fill=\"url(#caseColor)\"\n          stroke-linejoin=\"round\"\n          d=\"\n      M 1220 700\n      1220 860\n      A 1000 1900 0 0 0 1480 860\n      L 1480 700 Z\n    \"\n        />\n        \u003cellipse\n          id=\"midtom\"\n          fill=\"url(#head)\"\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          cx=\"1350\"\n          cy=\"700\"\n          rx=\"130\"\n          ry=\"20\"\n        />\n\n        \u003c!-- Bass drum -->\n        \u003ccircle\n          id=\"bass\"\n          fill=\"url(#head)\"\n          cx=\"1200\"\n          cy=\"1200\"\n          r=\"270\"\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n        />\n\n        \u003c!-- Snare drum -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 900 910 901 1410 780 1460 M 901 1410 1020 1460\"\n          fill=\"none\"\n        />\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          fill=\"url(#caseColor)\"\n          stroke-linejoin=\"round\"\n          d=\"\n      M 710 900\n      710 1050\n      A 950 1700 0 0 0 1110 1050\n      L 1110 900 Z\n    \"\n        />\n        \u003cellipse\n          id=\"snare\"\n          fill=\"url(#head)\"\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          cx=\"910\"\n          cy=\"900\"\n          rx=\"200\"\n          ry=\"50\"\n        />\n\n        \u003c!-- Floor tom -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 1700 1200 1740 1480 M 1500 1200 1450 1480\"\n          fill=\"none\"\n        />\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          fill=\"url(#caseColor)\"\n          stroke-linejoin=\"round\"\n          d=\"\n      M 1380 1020\n      1380 1350\n      A 950 1700 0 0 0 1820 1350\n      L 1820 1020 Z\n    \"\n        />\n        \u003cellipse\n          id=\"floortom\"\n          fill=\"url(#head)\"\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          cx=\"1600\"\n          cy=\"1020\"\n          rx=\"220\"\n          ry=\"60\"\n        />\n\n        \u003c!-- Hihat -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 500 830 500 1410 580 1460 M 500 1410 430 1460\"\n          fill=\"none\"\n        />\n        \u003cellipse\n          cx=\"500\"\n          cy=\"830\"\n          rx=\"200\"\n          ry=\"40\"\n          fill=\"url(#cymbal)\"\n          stroke=\"#222\"\n          stroke-width=\"1\"\n        />\n        \u003cellipse\n          id=\"hihat-head\"\n          cx=\"500\"\n          cy=\"800\"\n          rx=\"200\"\n          ry=\"40\"\n          fill=\"url(#cymbal)\"\n          stroke=\"#222\"\n          stroke-width=\"1\"\n        />\n\n        \u003c!-- Crash -->\n        \u003cpath\n          stroke-width=\"20\"\n          stroke=\"url(#case)\"\n          d=\"M 1850 600 1851 1410\"\n          fill=\"none\"\n        />\n        \u003cellipse\n          id=\"crash\"\n          cx=\"1850\"\n          cy=\"600\"\n          rx=\"300\"\n          ry=\"50\"\n          fill=\"url(#cymbal)\"\n          stroke=\"#222\"\n          stroke-width=\"1\"\n          transform=\"rotate(-15 1850 600)\"\n        />\n      \u003c/svg>\n\n      \u003cimg src=\"./keyboard.png\" class=\"img\" />\n\n      \u003cscript>\n        let isShiftPressed = false;\n\n        const hihatHead = document.querySelector(\"#hihat-head\");\n        const hitom = document.querySelector(\"#hitom\");\n        const midtom = document.querySelector(\"#midtom\");\n        const floortom = document.querySelector(\"#floortom\");\n        const snare = document.querySelector(\"#snare\");\n        const crash = document.querySelector(\"#crash\");\n        const bass = document.querySelector(\"#bass\");\n\n        /**\n         * Finds out which drum was played.\n         * @param key\n         * @returns {string|null}\n         */\n        const getInstrument = (key) => {\n          switch (key.toLowerCase()) {\n            case \"a\":\n              return hihatHead;\n            case \"f\":\n              return hitom;\n            case \"j\":\n              return midtom;\n            case \"l\":\n              return floortom;\n            case \"b\":\n              return snare;\n            case \"o\":\n              return crash;\n            case \" \":\n              return bass;\n          }\n\n          return null;\n        };\n\n        const timeouts = new Map();\n\n        document.addEventListener(\"keydown\", (e) => {\n          if (e.key === \"Shift\") {\n            isShiftPressed = true;\n            hihatHead.classList.add(\"closed\");\n            return;\n          }\n\n          const drum = getInstrument(e.key);\n          if (!drum) {\n            return;\n          }\n\n          let sound = sounds.get(drum);\n          if (drum === hihatHead) {\n            sound = isShiftPressed ? sound.closed : sound.open;\n          }\n          sound.pause();\n          sound.currentTime = 0;\n          sound.play();\n\n          drum.classList.add(\"played\");\n          if (timeouts.has(drum)) {\n            clearTimeout(timeouts.get(drum));\n          }\n          timeouts.set(\n            drum,\n            setTimeout(() => {\n              drum.classList.remove(\"played\");\n            }, 100)\n          );\n        });\n\n        document.addEventListener(\"keyup\", (e) => {\n          if (e.key === \"Shift\") {\n            isShiftPressed = false;\n            hihatHead.classList.remove(\"closed\");\n          }\n        });\n\n        const sounds = new Map();\n        sounds.set(hihatHead, {\n          open: new Audio(\"./sounds/Bb2.mp3\"),\n          closed: new Audio(\"./sounds/Gb2.mp3\")\n        });\n        sounds.set(hitom, new Audio(\"./sounds/D3.mp3\"));\n        sounds.set(midtom, new Audio(\"./sounds/B2.mp3\"));\n        sounds.set(floortom, new Audio(\"./sounds/G2.mp3\"));\n        sounds.set(snare, new Audio(\"./sounds/D2.mp3\"));\n        sounds.set(crash, new Audio(\"./sounds/Db3.mp3\"));\n        sounds.set(bass, new Audio(\"./sounds/C2.mp3\"));\n      \u003c/script>\n    \u003c/div>\n  \u003c/body>\n\u003c/html>\n","isBinary":false},"isEntry":true,"isTestFile":false,"sourceEqualsCompiled":false,"childModules":[],"dependencies":["/keyboard.png:"],"initiators":[],"transpilationDependencies":[],"transpilationInitiators":[],"asyncDependencies":[],"warnings":[],"hasMissingDependencies":false,"source":{"fileName":"/index.html","compiledCode":"\nfunction loadResources() {\n\trequire(\"./keyboard.png\");\n\n}\nif (document.readyState !== 'complete') {\n  window.addEventListener('load', function() { loadResources() });\n} else {\n  loadResources();\n}\n\n\n//# sourceURL=https://4gbd3.csb.app/index.html","sourceEqualsCompiled":false}},"/keyboard.png:":{"query":"","module":{"path":"/keyboard.png","code":"https://uploads.codesandbox.io/uploads/user/011d6ee4-dec0-4f71-a04d-138535a18382/3J3N-keyboard.png","isBinary":true},"isEntry":true,"isTestFile":false,"sourceEqualsCompiled":false,"childModules":[],"dependencies":[],"initiators":["/index.html:"],"transpilationDependencies":[],"transpilationInitiators":[],"asyncDependencies":[],"warnings":[],"hasMissingDependencies":false,"source":{"fileName":"/keyboard.png","compiledCode":"\n      module.exports = \"https://uploads.codesandbox.io/uploads/user/011d6ee4-dec0-4f71-a04d-138535a18382/3J3N-keyboard.png\";\n//# sourceURL=https://4gbd3.csb.app/keyboard.png","sourceEqualsCompiled":false}}},"cachedPaths":{"/":{"./keyboard.png":"/keyboard.png"}},"version":"https://codesandbox.io/static/js/sandbox.ca51da3ec.js","timestamp":1613521813711,"configurations":{"package":{"path":"/package.json","code":"{\n  \"name\": \"js-drumkit\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.html\",\n  \"scripts\": {\n    \"start\": \"parcel index.html --open\",\n    \"build\": \"parcel build index.html\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@babel/core\": \"7.2.0\",\n    \"parcel-bundler\": \"^1.6.1\"\n  },\n  \"keywords\": []\n}","generated":false,"parsed":{"name":"js-drumkit","version":"1.0.0","description":"","main":"index.html","scripts":{"start":"parcel index.html --open","build":"parcel build index.html"},"dependencies":{},"devDependencies":{"@babel/core":"7.2.0","parcel-bundler":"^1.6.1"},"keywords":[]}},"sandbox":{"path":"/sandbox.config.json","code":"{\n  \"infiniteLoopProtection\": true,\n  \"hardReloadOnChange\": false,\n  \"view\": \"browser\"\n}","generated":true,"parsed":{"infiniteLoopProtection":true,"hardReloadOnChange":false,"view":"browser"}},"now":{"path":"/vercel.json","code":"{}","generated":true,"parsed":{}},"babel":{"path":"/.babelrc","code":"{\n  \"presets\": [\n    \"env\"\n  ],\n  \"plugins\": [\n    \"transform-runtime\"\n  ],\n  \"parserOpts\": {\n    \"plugins\": [\n      \"dynamicImport\"\n    ]\n  }\n}","generated":true,"parsed":{"presets":["env"],"plugins":["transform-runtime"],"parserOpts":{"plugins":["dynamicImport"]}}},"typescript":{"path":"/tsconfig.json","code":"{\n  \"compilerOptions\": {\n    \"module\": \"commonjs\",\n    \"jsx\": \"preserve\",\n    \"esModuleInterop\": true,\n    \"sourceMap\": true,\n    \"allowJs\": true,\n    \"lib\": [\n      \"es6\",\n      \"dom\"\n    ],\n    \"rootDir\": \"src\",\n    \"moduleResolution\": \"node\"\n  }\n}","generated":true,"parsed":{"compilerOptions":{"module":"commonjs","jsx":"preserve","esModuleInterop":true,"sourceMap":true,"allowJs":true,"lib":["es6","dom"],"rootDir":"src","moduleResolution":"node"}}}},"entry":"/index.html","meta":{},"dependenciesQuery":"%40babel%2Fruntime%407.12.13+node-libs-browser%402.2.1"},
+  latestSha: "5137E9AC363B3A7056714B10294583AFFA8AEF8BCA7ECAB1EF5F5F92A83CE96E",
+  version: "https://codesandbox.io/static/js/sandbox.ca51da3ec.js"
+};
+
+</script>
+  <script crossorigin type="text/javascript" src="https://codesandbox.io/static/js/watermark-button.76f1e5b66.js"></script>
+  </body>
+
+</html>

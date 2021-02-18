@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1280 1280" preserveAspectRatio="xMidYMid meet" width="80" height="80">
+    <defs>
+        <linearGradient id="pickbg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(77, 22, 22);" />
+            <stop offset="100%" style="stop-color:rgb(150, 47, 47);" />
+        </linearGradient>
+    </defs>
+    <g transform="rotate(135, 640, 640)">
+        <path
+            d="M120 310 C 330 -10 950 -10 1160 310 Q 980 1100 640 1210 Q 300 1100 120 310 Z"
+            fill="url(#pickbg)"
+        />
+    </g>
+</svg>
