@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        padding: 20px;
+        margin: 0 auto;
+      }
+
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
+
+      #hihat-head.closed {
+        transform: translateY(10px);
+      }
+
+      .played {
+        transform: translateY(5px);
+      }
+      #bass.played {
+        transform: scale(0.98);
+        transform-origin: 1200px 1200px;
+      }
+      #crash.played {
+        fill: url(#cymbal);
+        transform: rotate(-20deg);
+        transform-origin: 1850px 600px;
+      }
+      #hihat-head.played {
+        fill: url(#cymbal);
+        transform: rotate(5deg);
+        transform-origin: 500px 830px;
+      }
+
+      .img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 2400 1600"
+        preserveAspectRatio="xMidYMid meet"
+        width="2400"
+        height="1600"
+      >
+        <defs>
+          <radialGradient id="head" fx="26%" fy="26%">
+            <stop offset="0%" style="stop-color: #f0ede6;" />
+            <stop offset="100%" style="stop-color: #f5e9c9;" />
+          </radialGradient>
+          <radialGradient id="headPressed" fx="26%" fy="26%">
+            <stop offset="0%" style="stop-color: #e3d8ba;" />
+            <stop offset="100%" style="stop-color: #f5e9c9;" />
+          </radialGradient>
+          <radialGradient id="case" fx="30%" fy="30%">
+            <stop offset="0%" style="stop-color: #82827f;" />
+            <stop offset="100%" style="stop-color: #6b6b64;" />
+          </radialGradient>
+          <linearGradient id="caseColor">
+            <stop offset="0%" style="stop-color: #6193ba;" />
+            <stop offset="20%" style="stop-color: #a8c9e3;" />
+            <stop offset="100%" style="stop-color: #6b6b64;" />
+          </linearGradient>
+          <linearGradient id="cymbal" gradientTransform="rotate(25)">
+            <stop offset="0%" style="stop-color: #ede58c;" />
+            <stop offset="30%" style="stop-color: #f2eec4;" />
+            <stop offset="60%" style="stop-color: #f2eec4;" />
+            <stop offset="100%" style="stop-color: #ede58c;" />
+          </linearGradient>
+        </defs>
+
+        <!-- Hi-Tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1000 700 1001 1200"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 880 700
+      880 820
+      A 1000 1900 0 0 0 1120 820
+      L 1120 700 Z
+    "
+        />
+        <ellipse
+          id="hitom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1000"
+          cy="700"
+          rx="120"
+          ry="20"
+        />
+
+        <!-- Mid-Tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1350 700 1351 1200"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 1220 700
+      1220 860
+      A 1000 1900 0 0 0 1480 860
+      L 1480 700 Z
+    "
+        />
+        <ellipse
+          id="midtom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1350"
+          cy="700"
+          rx="130"
+          ry="20"
+        />
+
+        <!-- Bass drum -->
+        <circle
+          id="bass"
+          fill="url(#head)"
+          cx="1200"
+          cy="1200"
+          r="270"
+          stroke-width="20"
+          stroke="url(#case)"
+        />
+
+        <!-- Snare drum -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 900 910 901 1410 780 1460 M 901 1410 1020 1460"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 710 900
+      710 1050
+      A 950 1700 0 0 0 1110 1050
+      L 1110 900 Z
+    "
+        />
+        <ellipse
+          id="snare"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="910"
+          cy="900"
+          rx="200"
+          ry="50"
+        />
+
+        <!-- Floor tom -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1700 1200 1740 1480 M 1500 1200 1450 1480"
+          fill="none"
+        />
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          fill="url(#caseColor)"
+          stroke-linejoin="round"
+          d="
+      M 1380 1020
+      1380 1350
+      A 950 1700 0 0 0 1820 1350
+      L 1820 1020 Z
+    "
+        />
+        <ellipse
+          id="floortom"
+          fill="url(#head)"
+          stroke-width="20"
+          stroke="url(#case)"
+          cx="1600"
+          cy="1020"
+          rx="220"
+          ry="60"
+        />
+
+        <!-- Hihat -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 500 830 500 1410 580 1460 M 500 1410 430 1460"
+          fill="none"
+        />
+        <ellipse
+          cx="500"
+          cy="830"
+          rx="200"
+          ry="40"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+        />
+        <ellipse
+          id="hihat-head"
+          cx="500"
+          cy="800"
+          rx="200"
+          ry="40"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+        />
+
+        <!-- Crash -->
+        <path
+          stroke-width="20"
+          stroke="url(#case)"
+          d="M 1850 600 1851 1410"
+          fill="none"
+        />
+        <ellipse
+          id="crash"
+          cx="1850"
+          cy="600"
+          rx="300"
+          ry="50"
+          fill="url(#cymbal)"
+          stroke="#222"
+          stroke-width="1"
+          transform="rotate(-15 1850 600)"
+        />
+      </svg>
+
+      <img src="./keyboard.png" class="img" />
+
+      <script>
+        let isShiftPressed = false;
+
+        const hihatHead = document.querySelector("#hihat-head");
+        const hitom = document.querySelector("#hitom");
+        const midtom = document.querySelector("#midtom");
+        const floortom = document.querySelector("#floortom");
+        const snare = document.querySelector("#snare");
+        const crash = document.querySelector("#crash");
+        const bass = document.querySelector("#bass");
+
+        /**
+         * Finds out which drum was played.
+         * @param key
+         * @returns {string|null}
+         */
+        const getInstrument = (key) => {
+          switch (key.toLowerCase()) {
+            case "a":
+              return hihatHead;
+            case "f":
+              return hitom;
+            case "j":
+              return midtom;
+            case "l":
+              return floortom;
+            case "b":
+              return snare;
+            case "o":
+              return crash;
+            case " ":
+              return bass;
+          }
+
+          return null;
+        };
+
+        const timeouts = new Map();
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = true;
+            hihatHead.classList.add("closed");
+            return;
+          }
+
+          const drum = getInstrument(e.key);
+          if (!drum) {
+            return;
+          }
+
+          let sound = sounds.get(drum);
+          if (drum === hihatHead) {
+            sound = isShiftPressed ? sound.closed : sound.open;
+          }
+          sound.pause();
+          sound.currentTime = 0;
+          sound.play();
+
+          drum.classList.add("played");
+          if (timeouts.has(drum)) {
+            clearTimeout(timeouts.get(drum));
+          }
+          timeouts.set(
+            drum,
+            setTimeout(() => {
+              drum.classList.remove("played");
+            }, 100)
+          );
+        });
+
+        document.addEventListener("keyup", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = false;
+            hihatHead.classList.remove("closed");
+          }
+        });
+
+        const sounds = new Map();
+        sounds.set(hihatHead, {
+          open: new Audio("./sounds/Bb2.mp3"),
+          closed: new Audio("./sounds/Gb2.mp3")
+        });
+        sounds.set(hitom, new Audio("./sounds/D3.mp3"));
+        sounds.set(midtom, new Audio("./sounds/B2.mp3"));
+        sounds.set(floortom, new Audio("./sounds/G2.mp3"));
+        sounds.set(snare, new Audio("./sounds/D2.mp3"));
+        sounds.set(crash, new Audio("./sounds/Db3.mp3"));
+        sounds.set(bass, new Audio("./sounds/C2.mp3"));
+      </script>
+    </div>
+  </body>
+</html>
