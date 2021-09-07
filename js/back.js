@@ -1,4 +1,4 @@
-< script > window.__INITIAL_STATE__ = {
+window.__INITIAL_STATE__ = {
 	"csrf": "ALtJtT7W-MV1bPXSWr7BKtaKjkiZXgXN29a8",
 	"origin": "http:\u002F\u002Fcms-user.internal.csdn.net",
 	"isMobile": false,
@@ -1150,7 +1150,4 @@
 	"canonical": "https:\u002F\u002Fblog.csdn.net\u002Fqq_44273429",
 	"active": 0,
 	"navBarFixed": false
-}; < /script><script type="text/javascript
-" src="
-https: //csdnimg.cn/release/cmsfe/public/js/runtime.5aafb0f2.js"></script><script type="text/javascript" src="https://csdnimg.cn/release/cmsfe/public/js/chunk/common.954136cc.js"></script><script type="text/javascript" src="https://csdnimg.cn/release/cmsfe/public/js/chunk/tpl/user-profile/index.7885a217.js"></script></body> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!---->
-
+}; 
