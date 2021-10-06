@@ -646,7 +646,6 @@ a {
   width: 20%;
   height: 20%;
   border-radius: 300px;
-  opacity: 0;
   -webkit-transition: all 0.2s ease-in;
 }
 #header .profilepic img.show {
