@@ -72,6 +72,6 @@ typora| [网盘地址](https://pan.baidu.com/s/1mA5NYA28l0wPFO5zl_wyVQ)|n7ea
 
 
 更多有趣、实用内容持续更新<br>
-扫码关注或者微信搜索公众号：啦啦啦好想biu点什么
+扫码关注或者微信搜索公众号：海拥
 
-![啦啦啦好想biu点什么](https://img-blog.csdnimg.cn/20210118135732258.jpg#pic_center)
+![海拥](https://img-blog.csdnimg.cn/20210118135732258.jpg#pic_center)
