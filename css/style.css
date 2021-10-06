@@ -643,8 +643,8 @@ a {
   text-align: center;
 }
 #header .profilepic img {
-  width: 20%;
-  height: 20%;
+  width: 100%;
+  height: 100%;
   border-radius: 300px;
   -webkit-transition: all 0.2s ease-in;
 }
