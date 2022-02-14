@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'Patrick Hand SC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/patrickhandsc/v8/0nkwC9f7MfsBiWcLtY65AWDK873ljiK-.ttf) format('truetype');
+}
+canvas {
+  width: auto;
+  max-width: 90%;
+  height: auto;
+  max-height: 75vh;
+  display: block;
+  margin: 0 auto;
+  border: solid 10px #330023;
+  cursor: move;
+  position: relative;
+  z-index: 2;
+}
+html {
+  height: 100%;
+  background: #470031;
+  color: #FFF;
+}
+body {
+  min-height: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+@media (min-width: 400px) and (min-height: 400px) and (max-width: 1200px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+/* //////////////////////////////////////// */
+/* Special Valentines Day Background *
+
+@width: 21px;
+@height: @width * 2;
+@speed: 10s;
+
+// body:before,
+// body:after {
+//   content: '';
+//   position: absolute;
+//   top: 0; right: 0; bottom: 0; left: 0;
+//   margin: auto;
+//   opacity: 0.5;
+//   width: 100%;
+//   height: 100%;
+//   box-sizing: content-box;
+  
+//   padding: @width @height;
+//   background-repeat: repeat;
+//   background-size: @width auto;
+//   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox=%220 -0.5 20 40%22 shape-rendering=%22crispEdges%22%3E%0A%3Cpath stroke=%22%23DC3737%22 d=%22M1 0h2M4 0h2M0 1h7M1 2h5M2 3h3M3 4h1%22 %2F%3E%0A%3C%2Fsvg%3E");
+  
+//   animation: hearts @speed linear infinite;
+//   //animation-timing-function: cubic-bezier(.65,0,.35,.99);
+//   @keyframes hearts {
+//     0% { transform: translate3d(0px, 0px, 0px); }
+// //    50% { transform: translate3d(@width, @height * -0.5, 0px); }
+//     100% { transform: translate3d(@width, -@height, 0px); }
+//   }
+  
+//     @keyframes hearts2 {
+//     0% { transform: translate3d(0px, 0px, 0px); }
+// //    50% { transform: translate3d(@width, @height * -0.5, 0px); }
+//     100% { transform: translate3d(-@width, -@height, 0px); }
+//   }
+// }
+
+// body:after {
+//   left: @width * -0.5;
+//   opacity: 0.25;
+//   animation-name: hearts2;
+//   animation-delay: @speed * -0.5;
+// }
+
+/* //////////////////////////////////////// */
+.controls {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  border: solid 10px #330023;
+  background: #330023;
+  text-align: center;
+  position: relative;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  font-family: 'Patrick Hand SC', cursive;
+  text-transform: uppercase;
+}
+.controls > * {
+  padding: 0.5em 0.5em;
+}
+.mission {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.keys {
+  margin: 0.5em auto 0.25em;
+}
+.green b {
+  color: #62D2A2;
+}
+.pink b {
+  color: #DD5B82;
+}
+.throb {
+  -webkit-animation: throb 1s linear infinite alternate;
+          animation: throb 1s linear infinite alternate;
+}
+@-webkit-keyframes throb {
+  0% {
+    color: #FE9797;
+  }
+  100% {
+    color: #DD5B82;
+  }
+}
+@keyframes throb {
+  0% {
+    color: #FE9797;
+  }
+  100% {
+    color: #DD5B82;
+  }
+}
+kbd {
+  display: inline-block;
+  padding: 10px;
+  border: solid 1px #aaa;
+  background: #eee;
+  border-radius: 0.1em;
+  color: #555;
+  width: 2.5em;
+  height: 1.2em;
+  text-transform: none;
+  border-bottom-width: 0.3em;
+  border-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  font-family: monospace;
+  font-size: calc(11px + 2vw);
+}
+[data-key] {
+  cursor: pointer;
+}

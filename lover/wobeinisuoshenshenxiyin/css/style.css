@@ -1,0 +1,56 @@
+body {
+  background-color: #ffa90b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+}
+
+#ilu {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.st1 {
+  fill: #ff6156;
+}
+
+.st2 {
+  fill: #ed4d4d;
+}
+
+.st3 {
+  fill: #67B2B8;
+}
+
+.st5 {
+  fill: #ebebf0;
+}
+
+.st6 {
+  fill: #d2d2d7;
+}
+
+.st7 {
+  fill: #5a5f64;
+}
+
+.st8 {
+  fill: #4b5055;
+}
+
+.st10 {
+  fill: #ebebf0;
+}
+
+.st11 {
+  fill: #d2d2d7;
+}
+
+#heart {
+  cursor: pointer;
+}
